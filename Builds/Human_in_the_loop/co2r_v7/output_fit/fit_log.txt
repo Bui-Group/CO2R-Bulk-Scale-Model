@@ -1,0 +1,101 @@
+=== Fit step (Stage-4 residual) ===
+i0_CO2R = 540.0000 A/m^2, lambda_MHC = 1.8000 eV
+HER_pf  = 2.409000e+13 mA/cm^2, alpha_c = 0.087200, k_GL = 1.000e-04 m/s
+Cache dir: output_fit/cache
+WARNING: Existing cache found. Verify kinetics match before reusing!
+
+§17.3 pre-fitting polish at the 5 experimental voltages (default kinetics):
+Cache: 89 solutions, V in [-2.500, -0.300]
+Cache: 89 solutions, V in [-2.500, -0.300]
+Cache: 89 solutions, V in [-2.500, -0.300]
+Cache: 89 solutions, V in [-2.500, -0.300]
+Cache: 89 solutions, V in [-2.500, -0.300]
+  polish V_RHE=-0.816 -> 3 iters, |F|inf=7.43e-13
+  polish V_RHE=-1.205 -> 2 iters, |F|inf=7.91e-13
+  polish V_RHE=-1.644 -> 2 iters, |F|inf=1.32e-12
+  polish V_RHE=-2.079 -> 2 iters, |F|inf=1.43e-12
+  polish V_RHE=-2.413 -> 3 iters, |F|inf=1.44e-12
+
+Initial objective at the default kinetics: SSE = 0.95257
+  V_RHE     i_CO model/exp        i_H2 model/exp
+  -0.816      49.04 /   35.1       27.52 /   29.9
+  -1.205     441.89 /  189.6       36.83 /   49.3
+  -1.644     622.29 /  299.1      105.86 /  119.6
+  -2.079     508.11 /  204.3      362.11 /  449.9
+  -2.413     334.16 /   64.6      822.48 /  850.5
+
+§17.5 Step 1 — one-at-a-time parameter sensitivity (SSE):
+  i0_CO2R        x=0.1:0.777  x=0.3:0.185  x=1:0.953  x=3:2.240  x=10:3.686
+  lambda_MHC     x=0.6:2.047  x=0.8:1.469  x=1:0.953  x=1.2:1.277  x=1.4:3.843
+  log10(HER_pf)  +=-1:6.645  +=-0.5:2.747  +=0:0.953  +=0.5:0.939  +=1:3.086
+  alpha_c_HER    x=0.5:6.625  x=0.75:2.749  x=1:0.953  x=1.5:1007917.368  x=2:1031669.471
+
+§17.5 Step 2 — fit CO2R (i0, lambda) with HER held at the initial guess:
+  -> i0=109.796  lambda=1.6065   SSE=0.05969  (71 evals)
+
+§17.5 Step 3 — fit HER (log10 pf, alpha_c) with CO2R fixed from Step 2:
+  -> log10(HER_pf)=13.3189  alpha_c=0.08906   SSE=0.05664  (131 evals)
+
+§17.5 Step 4 — joint 4-parameter Nelder-Mead refinement:
+Iter     Function value    √(Σ(yᵢ-ȳ)²)/n 
+------   --------------    --------------
+     0     1.580262e-01     5.193681e+05
+ * time: 2.6941299438476562e-5
+    20     1.580262e-01     2.236439e-01
+ * time: 54.11051392555237
+    40     9.096092e-02     1.449341e-03
+ * time: 67.03627896308899
+    60     7.765228e-02     2.380810e-03
+ * time: 76.05383801460266
+    80     5.655652e-02     1.480527e-04
+ * time: 84.62843012809753
+   100     5.608172e-02     5.154820e-06
+ * time: 93.13599610328674
+
+========================================================================
+FITTED KINETIC PARAMETERS
+========================================================================
+i0_CO2R       = 106.4457 A/m^2      (initial guess 540)
+lambda_MHC    = 1.61107 eV         (initial guess 1.8)
+HER_prefactor = 2.064390e+13 mA/cm^2  (initial guess 2.409e13)
+alpha_c_HER   = 0.088920           (initial guess 0.0872)
+SSE (log10 space, 10 points) = 0.056075     total objective evals = 323
+MHC pre-factor pf = a_v*i0/(n_e F c_ref) = 8.5020 1/s
+Wrote fitted_params.jl
+
+========================================================================
+§17.6 FIT QUALITY / ACCEPTANCE CRITERIA
+========================================================================
+V_RHE       i_CO mod   i_CO exp   rel err |   i_H2 mod   i_H2 exp   rel err
+-0.816      32.96       35.1      6.1%  |      26.79       29.9     10.4% 
+-1.205     223.04      189.6     17.6%  |      46.50       49.3      5.7% 
+-1.644     243.11      299.1     18.7%  |     152.32      119.6     27.4% 
+-2.079     165.53      204.3     19.0%  |     458.09      449.9      1.8% 
+-2.413      88.64       64.6     37.2%  |     915.12      850.5      7.6% 
+
+FE_CO model : 55.2  82.7  61.5  26.5  8.8
+FE_CO exp   : 54.0  79.4  71.4  31.2  7.1
+
+i_CO within tol at points 1-4 (<=30%)      : true
+i_CO within tol at point 5 (<=80%)        : true
+i_H2 within 30% at all 5 points            : true
+
+§17.8 — final 89-voltage Stage-4 sweep at the FITTED kinetics
+        (diagnostic artifact; Stage 5 does NOT warm-start from it)
+=== Fit sweep ===
+i0_CO2R = 106.4457 A/m^2, lambda_MHC = 1.6111 eV
+HER_pf  = 2.064390e+13 mA/cm^2, alpha_c = 0.088920, k_GL = 1.000e-04 m/s
+
+Sweep: 89/89 converged, mean iters 1.97, max |F|inf 2.14e-12
+FE_CO peak     : 82.9 % at V_RHE = -1.175  (target 70-85% near -1.205)
+i_CO derivative sign changes : 1  (target <= 1)
+i_H2 strictly monotone in |V|: true
+89/89 on one branch          : true
+
+Overlay check — polished exact-V points vs the 89-point sweep:
+  V_RHE=-0.816 (grid -0.825): i_CO polish    32.96 vs sweep    35.80 | i_H2    26.79 vs    27.08
+  V_RHE=-1.205 (grid -1.200): i_CO polish   223.04 vs sweep   221.11 | i_H2    46.50 vs    45.99
+  V_RHE=-1.644 (grid -1.650): i_CO polish   243.11 vs sweep   242.39 | i_H2   152.32 vs   154.86
+  V_RHE=-2.079 (grid -2.075): i_CO polish   165.53 vs sweep   166.44 | i_H2   458.09 vs   453.93
+  V_RHE=-2.413 (grid -2.425): i_CO polish    88.64 vs sweep    86.13 | i_H2   915.12 vs   936.14
+========================================================================

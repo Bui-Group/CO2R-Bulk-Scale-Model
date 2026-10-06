@@ -1,0 +1,62 @@
+# Re-run 2026-09-27 after the post-build Stage-5 change (no CO2(aq) flux at the GDL/CL face; guide v7.1, Stage 5 note). Console output follows.
+=== Stage 5 — phi_L + phi_s with FITTED kinetics ===
+i0_CO2R = 106.4865 A/m^2, lambda_MHC = 1.6111 eV
+HER_pf  = 2.0655e+13, alpha_c = 0.08892, k_GL = 1.000e-04 m/s
+Cache dir: output_stage5/cache
+Mesh: N_CL=80, N_GDL=120  ->  1480 DOFs (expect 1480)
+Continuation chain: 34 pre-anchor ramp points + 89 output points = 122 total
+  anchor at V_c = 0.0000 V SHE (V_RHE = +0.5131)
+JIT warm-up: residual 0.356 s, ||F||inf at the anchor guess = 1.505e-01
+JIT warm-up: first AD Jacobian 1.659 s
+
+Sweep complete: 89/89 output voltages converged in 13.55 s
+  Newton iterations/step: mean 1.98, max 2
+  max ||F||inf over the emitted voltages: 7.622e-08 (assertion tol 1e-06)
+  sub-step recoveries fired: 0
+
+--- §11 Stage 5 physicality checks ---
+  i_CO   : min 0.001695  max 333.4 mA/cm^2 (peak at V_RHE=-1.500)
+  i_H2   : min 8.695  max 1049 mA/cm^2
+  i_tot  : min 8.696  max 1190 mA/cm^2
+  FE_CO  : peak 85.7 % at V_RHE=-1.225
+  sign changes in di_CO/dV = 1 (target 1), di_H2/dV = 0 (target 0)
+  i_H2 strictly monotone increasing with |V|: true
+  At the most cathodic voltage V_RHE = -2.500:
+    pH:        x=0 -> 12.81 ; x=L_CL -> 11.13  (should decrease toward EL)
+    c_CO2(aq): x=0 -> 2.196 ; x=L_CL -> 6.492 mol/m3
+    c_OH:      x=0 -> 356.3 ; x=L_CL -> 7.356 mol/m3 (bulk eq 9.288e-03)
+    c_HCO3:    x=0 -> 6.938 ; x=L_CL -> 189.3 mol/m3
+    c_CO3:     x=0 -> 3040 ; x=L_CL -> 1712 mol/m3
+    c_Cs:      x=0 -> 6013 ; x=L_CL -> 3191 mol/m3
+    max R_CO2R = 1489, max R_HER = 1.285e+04 mol/m3/s
+    electroneutrality residual (by construction) = 0 (c_Cs is the closure)
+    pH range across the whole sweep: 8.64 – 12.81
+  CO2 mass-balance residual: max 2.700e-13 mol/m2/s (tol 1e-6)
+
+--- Stage 5 potential / charge-conservation diagnostics ---
+     V_RHE     i_tot  dphi_L[mV]   phis_rise    GDL frac |di|/i solid ionic relerr
+    -0.300      8.70      -1.555       0.431       0.892    4.40e-12    3.11e-12
+    -0.575     18.55      -2.955       0.922       0.891    2.72e-11    3.83e-15
+    -0.850     71.45      -7.353       3.568       0.886    7.93e-13    1.27e-15
+    -1.125    243.43     -12.737      12.166       0.886    2.10e-12    5.60e-16
+    -1.400    396.43     -15.486      19.731       0.889    1.16e-12    1.15e-16
+    -1.675    471.77     -16.033      23.506       0.888    1.31e-12    1.93e-16
+    -1.950    595.26     -16.532      29.720       0.886    1.48e-12    1.07e-15
+    -2.225    820.31     -17.215      40.989       0.886    1.18e-12    2.22e-16
+    -2.500   1190.07     -17.643      59.369       0.887    4.19e-13    1.53e-15
+  worst solid charge-conservation |di|/i : 3.275e-11 (target <= 1e-6)
+  worst ionic boundary rel error        : 3.114e-12 (target < 0.01)
+  |dphi_L| at i_tot > 500 mA/cm2: 16.19 - 17.64 mV (target 5-25 mV)
+  sign of dphi_L there: all negative (expect negative: phi_L[1] < phi_L[N_CL] = 0)
+  phi_L sign consistent across all voltages: true
+
+  Experimental comparison (interpolated onto the model sweep):
+      V_RHE    iCO_mod    iCO_exp     err% |    iH2_mod    iH2_exp     err%
+     -0.816     32.715     35.100     -6.8 |     26.381     29.900    -11.8
+     -1.205    257.573    189.600     35.9 |     42.957     49.300    -12.9
+     -1.644    325.112    299.100      8.7 |    137.202    119.600     14.7
+     -2.079    256.610    204.300     25.6 |    428.917    449.900     -4.7
+     -2.413    166.687     64.600    158.0 |    888.591    850.500      4.5
+
+Exported polarization.csv and profiles.bin to output_stage5/
+STAGE 5 COMPLETE — STOP GATE

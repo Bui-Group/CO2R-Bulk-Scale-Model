@@ -1,0 +1,112 @@
+=== Fit step (§17) ===
+Loaded Stage 4 grid cache: 89 voltages
+Initial polish at default kinetics (i0=540.0, lambda=1.80, HER_pf=2.409e+13, alpha_c=0.0872)...
+Initial polish OK.
+Starting Nelder-Mead (params0 = [540.0, 1.8, 13.381836799998343, 0.0872])...
+Iter     Function value    √(Σ(yᵢ-ȳ)²)/n 
+------   --------------    --------------
+     0     6.729372e-01     2.334531e+00
+ * time: 3.409385681152344e-5
+     5     6.729372e-01     9.434672e-02
+ * time: 6.5241379737854
+    10     5.772786e-01     4.429610e-02
+ * time: 11.352328062057495
+    15     5.342727e-01     3.217815e-02
+ * time: 16.120800018310547
+    20     4.893030e-01     1.177974e-02
+ * time: 22.15196394920349
+    25     4.501731e-01     1.406476e-02
+ * time: 26.870682954788208
+    30     4.124791e-01     1.597993e-02
+ * time: 30.490456104278564
+    35     4.124791e-01     1.957011e-02
+ * time: 33.67488503456116
+    40     3.689355e-01     1.532963e-02
+ * time: 38.0056369304657
+    45     3.328174e-01     2.327950e-02
+ * time: 41.768872022628784
+    50     2.245199e-01     2.913205e-02
+ * time: 45.574772119522095
+    55     1.627046e-01     3.293801e-02
+ * time: 49.55215311050415
+    60     8.030293e-02     3.124592e-02
+ * time: 54.259817123413086
+    65     7.708166e-02     1.155895e-02
+ * time: 59.26816511154175
+    70     6.548490e-02     1.912679e-03
+ * time: 65.51953101158142
+    75     5.871571e-02     1.567870e-03
+ * time: 72.49029803276062
+    80     5.726605e-02     6.064200e-04
+ * time: 79.3384280204773
+    85     5.653607e-02     1.954654e-04
+ * time: 87.06526207923889
+    90     5.627398e-02     4.913843e-05
+ * time: 93.6942069530487
+    95     5.612475e-02     2.389361e-05
+ * time: 106.21919512748718
+   100     5.611631e-02     6.140978e-06
+ * time: 113.37073802947998
+   105     5.608988e-02     8.199657e-06
+ * time: 120.15600800514221
+   110     5.607977e-02     3.832694e-06
+ * time: 127.83930492401123
+   115     5.607642e-02     1.266783e-06
+ * time: 135.53446006774902
+   120     5.607544e-02     3.681593e-07
+ * time: 145.25801014900208
+   125     5.607485e-02     1.861838e-07
+ * time: 156.6021649837494
+   130     5.607485e-02     5.756357e-08
+ * time: 163.29373908042908
+   135     5.607475e-02     3.803007e-08
+ * time: 170.35680294036865
+   140     5.607469e-02     1.709662e-08
+ * time: 180.48458099365234
+ * Status: success
+
+ * Candidate solution
+    Final objective value:     5.607466e-02
+
+ * Found with
+    Algorithm:     Nelder-Mead
+
+ * Convergence measures
+    √(Σ(yᵢ-ȳ)²)/n ≤ 1.0e-08
+
+ * Work counters
+    Seconds run:   184  (vs limit Inf)
+    Iterations:    142
+    f(x) calls:    250
+
+
+=== Fitted kinetics ===
+i0_CO2R      = 106.517 A/m^2
+lambda_MHC   = 1.6110 eV
+HER_prefactor= 2.0650e+13
+alpha_c_HER  = 0.08892
+final SSE = 0.05607, function evals = 250
+
+Per-point current comparison at the 5 experimental voltages:
+  V_RHE=-0.816: i_CO model=32.99 exp=35.10 (err=6.0%, tol=30%, PASS) | i_H2 model=26.79 exp=29.90 (err=10.4%, PASS)
+  V_RHE=-1.205: i_CO model=223.14 exp=189.60 (err=17.7%, tol=30%, PASS) | i_H2 model=46.50 exp=49.30 (err=5.7%, PASS)
+  V_RHE=-1.644: i_CO model=243.21 exp=299.10 (err=18.7%, tol=30%, PASS) | i_H2 model=152.32 exp=119.60 (err=27.4%, PASS)
+  V_RHE=-2.079: i_CO model=165.61 exp=204.30 (err=18.9%, tol=30%, PASS) | i_H2 model=458.12 exp=449.90 (err=1.8%, PASS)
+  V_RHE=-2.413: i_CO model=88.68 exp=64.60 (err=37.3%, tol=80%, PASS) | i_H2 model=915.19 exp=850.50 (err=7.6%, PASS)
+All per-point tolerances met: true
+
+Running final 89-voltage Stage 4 sweep at fitted kinetics -> output_fit/cache/
+[Fit] anchor solve at V_RHE = -0.3000 ...
+[Fit] anchor: converged=true iters=6 ||F||_inf=6.438e-13 reason=converged
+[Fit] step 10/89: V=-0.5250 converged=true iters=2 ||F||_inf=8.21e-13
+[Fit] step 20/89: V=-0.7750 converged=true iters=2 ||F||_inf=6.83e-13
+[Fit] step 30/89: V=-1.0250 converged=true iters=2 ||F||_inf=7.81e-13
+[Fit] step 40/89: V=-1.2750 converged=true iters=2 ||F||_inf=7.44e-13
+[Fit] step 50/89: V=-1.5250 converged=true iters=2 ||F||_inf=7.61e-13
+[Fit] step 60/89: V=-1.7750 converged=true iters=2 ||F||_inf=1.00e-12
+[Fit] step 70/89: V=-2.0250 converged=true iters=2 ||F||_inf=1.26e-12
+[Fit] step 80/89: V=-2.2750 converged=true iters=2 ||F||_inf=1.46e-12
+[Fit] step 89/89: V=-2.5000 converged=true iters=2 ||F||_inf=1.79e-12
+Fit-kinetics Stage-4-physics sweep: 89 / 89 converged
+Wrote polarization.csv, profiles.csv, gas_profiles.csv
+Wrote fitted_params.txt

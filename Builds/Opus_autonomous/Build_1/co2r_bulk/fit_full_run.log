@@ -1,0 +1,93 @@
+=== Fit step — Nelder-Mead on the Stage 4 residual ===
+i0_CO2R = 540.0000 A/m^2, lambda_MHC = 1.8000 eV
+HER_pf  = 2.4090e+13, alpha_c = 0.08720, k_GL = 1.000e-04 m/s
+Cache dir: output_fit/cache
+WARNING: Existing cache found. Verify kinetics match before reusing!
+Loaded 89 Stage-4 cache entries, V_RHE in [-2.500, -0.300]
+
+§17.3 pre-fitting polish at the 5 experimental voltages:
+  polish V_RHE=-0.816 (warm start -0.825): 3 iters, ||F||inf=7.36e-13
+  polish V_RHE=-1.205 (warm start -1.200): 2 iters, ||F||inf=8.08e-13
+  polish V_RHE=-1.644 (warm start -1.650): 2 iters, ||F||inf=1.15e-12
+  polish V_RHE=-2.079 (warm start -2.075): 2 iters, ||F||inf=1.17e-12
+  polish V_RHE=-2.413 (warm start -2.425): 3 iters, ||F||inf=1.82e-12
+
+§17.5 Step 1 — one-at-a-time parameter exploration (SSE_total):
+  base params: i0=540.0  lambda=1.80  log10(HER_pf)=13.382  alpha_c=0.0872
+  base SSE = 1000000.00000
+    i0_CO2R        = 100         SSE = 0.25152
+    i0_CO2R        = 540         SSE = 0.95257
+    i0_CO2R        = 2000        SSE = 2.50708
+    lambda_MHC     = 1.2         SSE = 1.87665
+    lambda_MHC     = 1.8         SSE = 0.95257
+    lambda_MHC     = 2.4         SSE = 2.65287
+    log10(HER_pf)  = 12.5        SSE = 5.51650
+    log10(HER_pf)  = 13.38       SSE = 0.95228
+    log10(HER_pf)  = 14.5        SSE = 4.05458
+    alpha_c        = 0.05        SSE = 5.23760
+    alpha_c        = 0.0872      SSE = 0.95257
+    alpha_c        = 0.15        SSE = 1016425.82257
+
+§17.5 Step 2 — Nelder-Mead on (i0_CO2R, lambda_MHC), HER fixed:
+  -> i0=106.487  lambda=1.5993   SSE_CO=0.041155  (27 iters)
+
+§17.5 Step 3 — Nelder-Mead on (log10 HER_pf, alpha_c), CO2R fixed:
+  -> log10(HER_pf)=13.4109  alpha_c=0.08343   SSE_H2=0.009193  (35 iters)
+
+§17.5 Step 4 — joint 4-parameter Nelder-Mead:
+  -> SSE=0.056075 after 123 iterations, 349 total objective evaluations
+
+========================================================================
+FITTED KINETIC PARAMETERS
+========================================================================
+  i0_CO2R       = 106.4865 A/m^2      (initial guess 540)
+  lambda_MHC    = 1.6111 eV         (initial guess 1.8)
+  HER_prefactor = 2.06546e+13 mA/cm^2  (initial guess 2.409e13)
+  alpha_c_HER   = 0.08892            (initial guess 0.0872)
+  SSE (log-space, 10 points) = 0.056075
+  written to fitted_params.txt
+
+§17.8 diagnostic 89-V Stage-4 sweep at the fitted kinetics:
+  89/89 converged in 3.29 s, 1.98 iters/step, max ||F||inf=2.028e-12, 0 recoveries
+
+§17.6 polish at the 5 experimental voltages (warm start = refit sweep):
+  V_RHE=-0.816: 3 iters, ||F||inf=6.34e-13
+  V_RHE=-1.205: 2 iters, ||F||inf=7.44e-13
+  V_RHE=-1.644: 2 iters, ||F||inf=7.50e-13
+  V_RHE=-2.079: 2 iters, ||F||inf=1.26e-12
+  V_RHE=-2.413: 3 iters, ||F||inf=1.69e-12
+
+§17.6 per-point acceptance check:
+     V_RHE    iCO_mod    iCO_exp     err%    tol |    iH2_mod    iH2_exp     err%    tol
+    -0.816      32.97      35.10     -6.1    30  |      26.80      29.90    -10.4    30 
+    -1.205     223.08     189.60     17.7    30  |      46.52      49.30     -5.6    30 
+    -1.644     243.16     299.10    -18.7    30  |     152.36     119.60     27.4    30 
+    -2.079     165.56     204.30    -19.0    30  |     458.20     449.90      1.8    30 
+    -2.413      88.65      64.60     37.2    80  |     915.30     850.50      7.6    30 
+  per-point tolerances all satisfied: true
+
+--- Fit-step physicality checks ---
+  i_CO   : min 0.001728  max 259.7 mA/cm^2 (peak at V_RHE=-1.425)
+  i_H2   : min 8.707  max 1077 mA/cm^2
+  i_tot  : min 8.708  max 1148 mA/cm^2
+  FE_CO  : peak 82.9 % at V_RHE=-1.175
+  sign changes in di_CO/dV = 1 (target 1), di_H2/dV = 0 (target 0)
+  i_H2 strictly monotone increasing with |V|: true
+
+  Experimental comparison (interpolated onto the model sweep):
+      V_RHE    iCO_mod    iCO_exp     err% |    iH2_mod    iH2_exp     err%
+     -0.816     33.096     35.100     -5.7 |     26.798     29.900    -10.4
+     -1.205    222.976    189.600     17.6 |     46.537     49.300     -5.6
+     -1.644    243.148    299.100    -18.7 |    152.418    119.600     27.4
+     -2.079    165.552    204.300    -19.0 |    458.271    449.900      1.9
+     -2.413     88.668     64.600     37.3 |    915.511    850.500      7.6
+
+  Branch check (§17.6 crit. 4) — polished points vs the 89-V sweep:
+    V_RHE=-0.816: polished iCO=32.965 vs sweep 33.096 (0.40%) | iH2=26.802 vs 26.798 (0.01%)
+    V_RHE=-1.205: polished iCO=223.078 vs sweep 222.976 (0.05%) | iH2=46.515 vs 46.537 (0.05%)
+    V_RHE=-1.644: polished iCO=243.164 vs sweep 243.148 (0.01%) | iH2=152.360 vs 152.418 (0.04%)
+    V_RHE=-2.079: polished iCO=165.558 vs sweep 165.552 (0.00%) | iH2=458.195 vs 458.271 (0.02%)
+    V_RHE=-2.413: polished iCO=88.651 vs sweep 88.668 (0.02%) | iH2=915.303 vs 915.511 (0.02%)
+
+Exported polarization.csv and profiles.bin to output_fit/
+FIT STEP COMPLETE — STOP GATE

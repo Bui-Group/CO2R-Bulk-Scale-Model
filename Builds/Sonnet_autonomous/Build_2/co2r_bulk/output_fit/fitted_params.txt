@@ -1,0 +1,5 @@
+i0_CO2R=106.506813
+lambda_MHC=1.610954
+HER_prefactor=2.065126e+13
+alpha_c_HER=0.088916
+SSE=0.056075

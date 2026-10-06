@@ -1,0 +1,10 @@
+# model.jl — single include point for the whole model
+include("params.jl")
+include("mesh.jl")
+include("chemistry.jl")
+include("kinetics.jl")
+include("transport.jl")
+include("gas_transport.jl")
+include("newton_affine.jl")
+include("assembly.jl")
+include("driver.jl")

@@ -1,0 +1,11 @@
+# model.jl — load the whole model in dependency order
+include("params.jl")
+include("mesh.jl")
+include("chemistry.jl")
+include("kinetics.jl")
+include("transport.jl")
+include("gas_transport.jl")
+include("assembly.jl")
+include("newton_affine.jl")
+include("driver.jl")
+include("checks.jl")

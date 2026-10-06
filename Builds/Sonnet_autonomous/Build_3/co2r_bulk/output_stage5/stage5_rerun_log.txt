@@ -1,0 +1,32 @@
+# Re-run 2026-09-27 after the post-build Stage-5 change (no CO2(aq) flux at the GDL/CL face; guide v7.1, Stage 5 note). Console output follows.
+=== Stage 5 ===
+Loaded FITTED kinetics: i0_CO2R=106.517 A/m^2, lambda_MHC=1.6110 eV, HER_pf=2.0650e+13, alpha_c=0.08892
+(pre-fit defaults were: i0=540, lambda=1.8, HER_pf=2.409e13, alpha_c=0.0872 — verify these differ)
+Cache dir: output_stage5/cache
+N_CL=80, N_GDL=120, total DOFs=1480 (production=1480 at 80/120)
+∂F/∂V structure probe at V_c=0 anchor guess: 1 nonzero entries (expect exactly 1)
+[Stage5] anchor solve at V_c = 0 (V_applied_SHE = 0) ...
+[Stage5] anchor: converged=true iters=6 ||F||_inf=6.756e-11 reason=converged
+[Stage5] pre-ramp complete: V_SHE=-0.81305 (target -0.81305) in 33 steps
+[Stage5] step 10/89: V_SHE=-1.0381 converged=true iters=2 ||F||_inf=2.88e-08
+[Stage5] step 20/89: V_SHE=-1.2881 converged=true iters=2 ||F||_inf=2.85e-08
+[Stage5] step 30/89: V_SHE=-1.5381 converged=true iters=2 ||F||_inf=2.63e-08
+[Stage5] step 40/89: V_SHE=-1.7881 converged=true iters=2 ||F||_inf=3.26e-08
+[Stage5] step 50/89: V_SHE=-2.0381 converged=true iters=2 ||F||_inf=6.18e-08
+[Stage5] step 60/89: V_SHE=-2.2881 converged=true iters=2 ||F||_inf=6.47e-08
+[Stage5] step 70/89: V_SHE=-2.5381 converged=true iters=2 ||F||_inf=7.46e-08
+[Stage5] step 80/89: V_SHE=-2.7881 converged=true iters=2 ||F||_inf=6.67e-08
+[Stage5] step 89/89: V_SHE=-3.0131 converged=true iters=2 ||F||_inf=7.65e-08
+
+=== Stage 5 summary ===
+Converged: 89 / 89 voltages
+max ||F||_inf = 7.773e-08, mean iters/step (excl. anchor) = 1.99
+
+--- Physicality checks ---
+V_RHE=-0.525: i_tot=15.9 mA/cm2, Δφ_L=-2.61 mV, solid drop=0.79 mV, |Δi_far_vs_is|/i=1.10e-11, ionic-R rel_err=1.75e-11
+V_RHE=-1.025: i_tot=169.6 mA/cm2, Δφ_L=-10.94 mV, solid drop=8.49 mV, |Δi_far_vs_is|/i=4.72e-13, ionic-R rel_err=1.90e-11
+V_RHE=-1.525: i_tot=430.6 mA/cm2, Δφ_L=-15.82 mV, solid drop=21.43 mV, |Δi_far_vs_is|/i=1.75e-12, ionic-R rel_err=2.67e-12
+V_RHE=-2.025: i_tot=644.7 mA/cm2, Δφ_L=-16.71 mV, solid drop=32.20 mV, |Δi_far_vs_is|/i=1.35e-12, ionic-R rel_err=1.07e-12
+V_RHE=-2.500: i_tot=1190.0 mA/cm2, Δφ_L=-17.64 mV, solid drop=59.37 mV, |Δi_far_vs_is|/i=5.30e-13, ionic-R rel_err=3.58e-12
+Wrote polarization.csv, profiles.csv, gas_profiles.csv, phi_profiles.csv
+Sign changes in di_CO/dV = 1 (expect 1), di_H2/dV = 0 (expect 0)

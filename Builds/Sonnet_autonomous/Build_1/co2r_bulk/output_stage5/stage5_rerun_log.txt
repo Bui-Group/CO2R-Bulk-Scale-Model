@@ -1,0 +1,110 @@
+# Re-run 2026-09-27 after the post-build Stage-5 change (no CO2(aq) flux at the GDL/CL face; guide v7.1, Stage 5 note). Console output follows.
+=== Stage 5 ===
+Loaded FITTED kinetics: i0_CO2R=106.494 A/m^2  lambda_MHC=1.6105 eV  HER_pf=2.0665e+13  alpha_c=0.08891
+N_CL = 80, N_GDL = 120
+Stage 5 DOFs = 1480 (expect 1480 at production mesh)
+Anchor (V_c=0, V_cathode=0.51305 V RHE): converged=true iters=6 ||F||=1.788e-08 reason=converged (t=4.1s)
+Pre-anchor ramp: 33 steps from V_c=0 to V_c=-0.81305 (V_RHE=-0.300)
+Ramp complete: reached V_RHE=-0.300, ||F||-tight-converged throughout
+[s5]  V=-0.3000  (first output point, post-ramp)
+[s5]  V=-0.3250  iters=2  ||F||=1.44e-08  reason=converged
+[s5]  V=-0.3500  iters=2  ||F||=1.58e-08  reason=converged
+[s5]  V=-0.3750  iters=2  ||F||=1.43e-08  reason=converged
+[s5]  V=-0.4000  iters=2  ||F||=1.57e-08  reason=converged
+[s5]  V=-0.4250  iters=2  ||F||=1.78e-08  reason=converged
+[s5]  V=-0.4500  iters=2  ||F||=1.51e-08  reason=converged
+[s5]  V=-0.4750  iters=2  ||F||=1.25e-08  reason=converged
+[s5]  V=-0.5000  iters=2  ||F||=3.63e-08  reason=converged
+[s5]  V=-0.5250  iters=2  ||F||=3.61e-08  reason=converged
+[s5]  V=-0.5500  iters=2  ||F||=3.36e-08  reason=converged
+[s5]  V=-0.5750  iters=2  ||F||=3.54e-08  reason=converged
+[s5]  V=-0.6000  iters=2  ||F||=3.71e-08  reason=converged
+[s5]  V=-0.6250  iters=2  ||F||=3.17e-08  reason=converged
+[s5]  V=-0.6500  iters=2  ||F||=3.45e-08  reason=converged
+[s5]  V=-0.6750  iters=2  ||F||=3.41e-08  reason=converged
+[s5]  V=-0.7000  iters=2  ||F||=2.74e-08  reason=converged
+[s5]  V=-0.7250  iters=2  ||F||=3.29e-08  reason=converged
+[s5]  V=-0.7500  iters=2  ||F||=2.59e-08  reason=converged
+[s5]  V=-0.7750  iters=2  ||F||=2.99e-08  reason=converged
+[s5]  V=-0.8000  iters=2  ||F||=3.01e-08  reason=converged
+[s5]  V=-0.8250  iters=2  ||F||=3.43e-08  reason=converged
+[s5]  V=-0.8500  iters=2  ||F||=3.28e-08  reason=converged
+[s5]  V=-0.8750  iters=2  ||F||=3.02e-08  reason=converged
+[s5]  V=-0.9000  iters=2  ||F||=2.90e-08  reason=converged
+[s5]  V=-0.9250  iters=2  ||F||=3.50e-08  reason=converged
+[s5]  V=-0.9500  iters=2  ||F||=2.23e-08  reason=converged
+[s5]  V=-0.9750  iters=2  ||F||=3.57e-08  reason=converged
+[s5]  V=-1.0000  iters=2  ||F||=2.85e-08  reason=converged
+[s5]  V=-1.0250  iters=2  ||F||=2.83e-08  reason=converged
+[s5]  V=-1.0500  iters=2  ||F||=3.50e-08  reason=converged
+[s5]  V=-1.0750  iters=2  ||F||=3.02e-08  reason=converged
+[s5]  V=-1.1000  iters=2  ||F||=3.80e-08  reason=converged
+[s5]  V=-1.1250  iters=2  ||F||=3.23e-08  reason=converged
+[s5]  V=-1.1500  iters=2  ||F||=3.00e-08  reason=converged
+[s5]  V=-1.1750  iters=2  ||F||=3.40e-08  reason=converged
+[s5]  V=-1.2000  iters=2  ||F||=2.76e-08  reason=converged
+[s5]  V=-1.2250  iters=2  ||F||=3.28e-08  reason=converged
+[s5]  V=-1.2500  iters=2  ||F||=3.33e-08  reason=converged
+[s5]  V=-1.2750  iters=2  ||F||=3.28e-08  reason=converged
+[s5]  V=-1.3000  iters=2  ||F||=3.29e-08  reason=converged
+[s5]  V=-1.3250  iters=2  ||F||=2.71e-08  reason=converged
+[s5]  V=-1.3500  iters=2  ||F||=3.14e-08  reason=converged
+[s5]  V=-1.3750  iters=2  ||F||=3.70e-08  reason=converged
+[s5]  V=-1.4000  iters=2  ||F||=2.64e-08  reason=converged
+[s5]  V=-1.4250  iters=2  ||F||=2.58e-08  reason=converged
+[s5]  V=-1.4500  iters=2  ||F||=2.79e-08  reason=converged
+[s5]  V=-1.4750  iters=2  ||F||=2.80e-08  reason=converged
+[s5]  V=-1.5000  iters=2  ||F||=3.53e-08  reason=converged
+[s5]  V=-1.5250  iters=2  ||F||=5.90e-08  reason=converged
+[s5]  V=-1.5500  iters=2  ||F||=6.01e-08  reason=converged
+[s5]  V=-1.5750  iters=1  ||F||=8.89e-05  reason=converged
+[s5]  V=-1.6000  iters=2  ||F||=4.93e-08  reason=converged
+[s5]  V=-1.6250  iters=2  ||F||=7.17e-08  reason=converged
+[s5]  V=-1.6500  iters=2  ||F||=6.60e-08  reason=converged
+[s5]  V=-1.6750  iters=2  ||F||=6.64e-08  reason=converged
+[s5]  V=-1.7000  iters=2  ||F||=6.46e-08  reason=converged
+[s5]  V=-1.7250  iters=2  ||F||=7.28e-08  reason=converged
+[s5]  V=-1.7500  iters=2  ||F||=6.77e-08  reason=converged
+[s5]  V=-1.7750  iters=2  ||F||=7.85e-08  reason=converged
+[s5]  V=-1.8000  iters=2  ||F||=7.12e-08  reason=converged
+[s5]  V=-1.8250  iters=2  ||F||=6.47e-08  reason=converged
+[s5]  V=-1.8500  iters=2  ||F||=5.62e-08  reason=converged
+[s5]  V=-1.8750  iters=2  ||F||=6.18e-08  reason=converged
+[s5]  V=-1.9000  iters=2  ||F||=5.53e-08  reason=converged
+[s5]  V=-1.9250  iters=2  ||F||=5.91e-08  reason=converged
+[s5]  V=-1.9500  iters=2  ||F||=6.17e-08  reason=converged
+[s5]  V=-1.9750  iters=2  ||F||=5.34e-08  reason=converged
+[s5]  V=-2.0000  iters=2  ||F||=5.24e-08  reason=converged
+[s5]  V=-2.0250  iters=2  ||F||=6.08e-08  reason=converged
+[s5]  V=-2.0500  iters=2  ||F||=5.41e-08  reason=converged
+[s5]  V=-2.0750  iters=2  ||F||=7.57e-08  reason=converged
+[s5]  V=-2.1000  iters=2  ||F||=6.55e-08  reason=converged
+[s5]  V=-2.1250  iters=2  ||F||=7.04e-08  reason=converged
+[s5]  V=-2.1500  iters=2  ||F||=7.40e-08  reason=converged
+[s5]  V=-2.1750  iters=2  ||F||=5.91e-08  reason=converged
+[s5]  V=-2.2000  iters=2  ||F||=6.43e-08  reason=converged
+[s5]  V=-2.2250  iters=2  ||F||=8.39e-08  reason=converged
+[s5]  V=-2.2500  iters=2  ||F||=1.00e-07  reason=converged
+[s5]  V=-2.2750  iters=2  ||F||=1.56e-07  reason=converged
+[s5]  V=-2.3000  iters=2  ||F||=2.18e-07  reason=converged
+[s5]  V=-2.3250  iters=2  ||F||=2.81e-07  reason=converged
+[s5]  V=-2.3500  iters=2  ||F||=4.74e-07  reason=converged
+[s5]  V=-2.3750  iters=2  ||F||=5.12e-07  reason=converged
+[s5]  V=-2.4000  iters=2  ||F||=1.02e-06  reason=converged
+[s5]  V=-2.4250  iters=2  ||F||=1.25e-06  reason=converged
+[s5]  V=-2.4500  iters=2  ||F||=2.15e-06  reason=converged
+[s5]  V=-2.4750  iters=2  ||F||=3.69e-06  reason=converged
+[s5]  V=-2.5000  iters=2  ||F||=4.08e-06  reason=converged
+Stage 5 sweep complete: 89/89 voltages converged in 21.3 s
+
+--- Physicality checks (§11 Stage 5 / §9.5.8) ---
+V_RHE= -0.300: i_tot=    8.70 mA/cm2 | dphiL= -1.556 mV | solid_drop=  0.432 mV (GDL 89.2%) | |Δi_charge|/i=4.95e-12 | |Δi_ionic|/i=1.52e-11
+V_RHE= -1.200: i_tot=  297.42 mA/cm2 | dphiL=-13.852 mV | solid_drop= 14.841 mV (GDL 88.7%) | |Δi_charge|/i=8.76e-14 | |Δi_ionic|/i=3.55e-13
+V_RHE= -1.650: i_tot=  464.05 mA/cm2 | dphiL=-15.998 mV | solid_drop= 23.117 mV (GDL 88.8%) | |Δi_charge|/i=5.37e-13 | |Δi_ionic|/i=2.11e-12
+V_RHE= -2.075: i_tot=  682.25 mA/cm2 | dphiL=-16.833 mV | solid_drop= 34.084 mV (GDL 88.6%) | |Δi_charge|/i=1.38e-12 | |Δi_ionic|/i=6.23e-12
+V_RHE= -2.500: i_tot= 1189.98 mA/cm2 | dphiL=-17.643 mV | solid_drop= 59.365 mV (GDL 88.7%) | |Δi_charge|/i=5.50e-14 | |Δi_ionic|/i=4.50e-12
+Sign changes in di_CO/dV: 1 (want exactly 1)  |  sign changes in di_H2/dV: 0 (want 0, strictly monotone=true)
+Peak FE_CO = 85.7% at V_RHE=-1.225 (target 70-85%, near -1.205)
+At V_RHE=-2.425: Stage4(pre-fit) i_CO=60.97 i_H2=825.20 | Stage5(fitted+full-physics) i_CO=163.11 i_H2=909.49 mA/cm2
+
+Stage 5 driver finished. Run plot_stage5.py to generate figures, then inspect.

@@ -1,0 +1,6 @@
+# fitted kinetic parameters, run_fit.jl (Stage-4 residual, §17)
+i0_CO2R = 106.3849028079
+lambda_MHC = 1.6107868219
+HER_prefactor = 2.0636203533e+13
+alpha_c_HER = 0.0889096704
+k_GL = 1.0000000000e-04

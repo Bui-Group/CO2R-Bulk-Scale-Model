@@ -1,0 +1,108 @@
+=== Stage Fit (Stage-4 residual) ===
+i0_CO2R = 540.0000 A/m², λ_MHC = 1.8000 eV
+HER_pf  = 2.409000e+13, α_c = 0.087200, k_GL = 1.000e-04
+Cache dir: output_fit/cache
+mesh: N_CL=80 N_GDL=120 ; DOFs=1200
+Stage-4 cache: 89 solutions, V ∈ [-2.500, -0.300]
+
+── pre-fit polish at the 5 experimental voltages (§17.3) ──
+  polish V_RHE=-0.816 → 3 iters, ‖F‖∞=7.43e-13
+  polish V_RHE=-1.205 → 2 iters, ‖F‖∞=7.91e-13
+  polish V_RHE=-1.644 → 2 iters, ‖F‖∞=1.38e-12
+  polish V_RHE=-2.079 → 2 iters, ‖F‖∞=1.39e-12
+  polish V_RHE=-2.413 → 3 iters, ‖F‖∞=1.93e-12
+
+[Step 0: initial guess]  i0=540.000  λ=1.8000  log10(HER_pf)=13.3818  α_c=0.08720
+  V_RHE    i_CO_mod  i_CO_exp   err%     i_H2_mod  i_H2_exp   err%
+  -0.816     49.044    35.100    +39.7     27.525    29.900     -7.9
+  -1.205    441.885   189.600   +133.1     36.833    49.300    -25.3
+  -1.644    622.285   299.100   +108.1    105.862   119.600    -11.5
+  -2.079    508.111   204.300   +148.7    362.111   449.900    -19.5
+  -2.413    334.157    64.600   +417.3    822.476   850.500     -3.3
+
+── Step 1: one-at-a-time parameter exploration ──
+  i0_CO2R        =  50.0000 → SSE=  0.8822  i_CO=[7,105,141,89,45]  i_H2=[34,64,183,499,947]
+  i0_CO2R        = 150.0000 → SSE=  0.1778  i_CO=[18,224,313,222,124]  i_H2=[32,51,148,451,911]
+  i0_CO2R        = 540.0000 → SSE=  0.9526  i_CO=[49,442,622,508,334]  i_H2=[28,37,106,362,822]
+  i0_CO2R        = 1500.0000 → SSE=  2.1434  i_CO=[95,660,916,807,599]  i_H2=[23,28,81,293,731]
+  λ_MHC          =   1.0000 → SSE=  2.1408  i_CO=[405,584,546,431,272]  i_H2=[12,30,114,384,847]
+  λ_MHC          =   1.4000 → SSE=  1.5399  i_CO=[184,586,591,474,307]  i_H2=[18,30,109,371,833]
+  λ_MHC          =   1.8000 → SSE=  0.9526  i_CO=[49,442,622,508,334]  i_H2=[28,37,106,362,822]
+  λ_MHC          =   2.4000 → SSE=  2.6529  i_CO=[2,137,555,547,367]  i_H2=[35,61,114,352,810]
+  log10 HER_pf   =  12.5000 → SSE=  5.5165  i_CO=[58,458,667,649,604]  i_H2=[4,5,15,55,150]
+  log10 HER_pf   =  13.0000 → SSE=  2.1474  i_CO=[55,453,652,597,485]  i_H2=[12,15,45,166,416]
+  log10 HER_pf   =  13.3800 → SSE=  0.9558  i_CO=[49,442,622,509,335]  i_H2=[27,37,105,361,820]
+  log10 HER_pf   =  14.0000 → SSE=  1.2154  i_CO=[32,390,496,260,95]  i_H2=[93,143,382,1076,2231]
+  α_c_HER        =   0.0500 → SSE=  5.2376  i_CO=[55,455,665,658,643]  i_H2=[12,10,18,38,68]
+  α_c_HER        =   0.0872 → SSE=  0.9526  i_CO=[49,442,622,508,334]  i_H2=[28,37,106,362,822]
+  α_c_HER        =   0.1500 → SSE=1016425.8226  i_CO=[49,442,622,508,334]  i_H2=[87,190,1082,7513,28640]
+  α_c_HER        =   0.2500 → SSE=1110386.6722  i_CO=[49,442,622,508,334]  i_H2=[45,75,289,1342,3813]
+
+── Step 2: fit (i0_CO2R, λ_MHC) against i_CO only ──
+Step 2 → i0=106.588 λ=1.6000 (SSE_CO=0.04115, 82 evals)
+
+── Step 3: fit (HER_prefactor, α_c) against i_H₂ only ──
+Step 3 → log10 HER_pf=13.4102 α_c=0.08348 (SSE_H2=0.00917, 132 evals)
+
+[after Steps 2-3]  i0=106.588  λ=1.6000  log10(HER_pf)=13.4102  α_c=0.08348
+  V_RHE    i_CO_mod  i_CO_exp   err%     i_H2_mod  i_H2_exp   err%
+  -0.816     33.945    35.100     -3.3     28.693    29.900     -4.0
+  -1.205    224.815   189.600    +18.6     47.341    49.300     -4.0
+  -1.644    244.836   299.100    -18.1    144.872   119.600    +21.1
+  -2.079    174.703   204.300    -14.5    414.842   449.900     -7.8
+  -2.413    101.576    64.600    +57.2    813.550   850.500     -4.3
+
+── Step 4: joint 4-parameter Nelder-Mead ──
+Step 4 → SSE=0.056075 after 98 NM iterations (322 total objective evals)
+
+[FITTED]  i0=106.604  λ=1.6114  log10(HER_pf)=13.3145  α_c=0.08894
+  V_RHE    i_CO_mod  i_CO_exp   err%     i_H2_mod  i_H2_exp   err%
+  -0.816     32.963    35.100     -6.1     26.790    29.900    -10.4
+  -1.205    223.195   189.600    +17.7     46.495    49.300     -5.7
+  -1.644    243.362   299.100    -18.6    152.332   119.600    +27.4
+  -2.079    165.687   204.300    -18.9    458.275   449.900     +1.9
+  -2.413     88.702    64.600    +37.3    915.619   850.500     +7.7
+
+fit wall time: 172.5 s
+
+── §17.6 acceptance criteria ──
+  V=-0.816  |Δi_CO|=  6.1% (tol 30%) PASS   |Δi_H2|= 10.4% (tol 30%) PASS
+  V=-1.205  |Δi_CO|= 17.7% (tol 30%) PASS   |Δi_H2|=  5.7% (tol 30%) PASS
+  V=-1.644  |Δi_CO|= 18.6% (tol 30%) PASS   |Δi_H2|= 27.4% (tol 30%) PASS
+  V=-2.079  |Δi_CO|= 18.9% (tol 30%) PASS   |Δi_H2|=  1.9% (tol 30%) PASS
+  V=-2.413  |Δi_CO|= 37.3% (tol 80%) PASS   |Δi_H2|=  7.7% (tol 30%) PASS
+per-point tolerances: ALL PASS
+
+── final 89-V Stage-4 sweep at the fitted kinetics (diagnostic artifact) ──
+=== Stage Fit sweep ===
+i0_CO2R = 106.6037 A/m², λ_MHC = 1.6114 eV
+HER_pf  = 2.063185e+13, α_c = 0.088942, k_GL = 1.000e-04
+Cache dir: output_fit/cache
+sweep: 89/89 converged, max ‖F‖∞ = 1.905e-12, 1.97 iters/step
+
+── Physicality checks ──
+pH range over sweep : 8.64 – 13.19
+min c_CO2(aq)       : 0.5760 mol/m³
+pH(x=0) = 13.19  →  pH(x=L_CL) = 11.54   (must DECREASE toward electrolyte)
+c_CO2: x=0 0.8705 → x=L_CL 6.3669 mol/m³
+c_OH : x=0 8.4871e+02 → x=L_CL 1.9115e+01 mol/m³ (bulk eq 9.288e-03)
+sign changes di_CO/dV = 1 (target 1) ; di_H2/dV = 0 (target 0)
+peak FE_CO = 82.9 % at V_RHE = -1.175
+i_tot at V_RHE=-2.500 : 1148.92 mA/cm² (i_CO 71.21, i_H2 1077.72)
+global CO₂(aq) balance = -3.485e-17 ; OH⁻ balance = -1.375e-12 mol/m²/s (tol 1e-6)
+J_OH(L_CL) = +2.7727e-03 (should be >0, leaving) ; J_CO2 = -3.8780e-04 (should be <0)
+Biot numbers k_MT·L_CL/D_eff = [4.86, 5.71, 9.01, 9.78, 7.67] (want O(0.1–10))
+FE_CO peak: 82.9 % at V_RHE = -1.175 (target 70–85 %, within 100 mV of −1.205)
+sign changes di_CO/dV = 1 (target 1); di_H2/dV = 0 (target 0)
+
+── vs experiment (Romiluyi et al. 2023) ──
+  V_RHE    i_CO_mod  i_CO_exp   err%     i_H2_mod  i_H2_exp   err%
+  -0.825     35.802    35.100     +2.0     27.082    29.900     -9.4
+  -1.200    221.267   189.600    +16.7     45.986    49.300     -6.7
+  -1.650    242.635   299.100    -18.9    154.873   119.600    +29.5
+  -2.075    166.598   204.300    -18.5    454.116   449.900     +0.9
+  -2.425     86.189    64.600    +33.4    936.652   850.500    +10.1
+
+fitted parameters written to output_fit/fitted_params.txt
+Fit step complete — STOP for review.
+exit=0

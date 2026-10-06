@@ -1,0 +1,5 @@
+i0_CO2R        = 106.445689       A/m^2
+lambda_MHC     = 1.611074          eV
+HER_prefactor  = 2.064390e+13   mA/cm^2
+alpha_c_HER    = 0.088920          -
+k_GL           = 1.000000e-04        m/s

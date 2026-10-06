@@ -1,0 +1,57 @@
+=== Stage Fit (starting from the default/initial-guess kinetics) ===
+i0_CO2R = 540.0000 A/m^2, lambda_MHC = 1.8000 eV
+HER_pf  = 2.409000e+13, alpha_c = 0.087200, k_GL = 1.000e-04 m/s
+
+Stage-4 cache: 89 solutions, V in [-2.500, -0.300]
+
+Pre-fit polish at the 5 experimental voltages (§17.3):
+  V_RHE= -0.816  i_CO=   49.04  i_H2=   27.52 mA/cm2
+  V_RHE= -1.205  i_CO=  441.89  i_H2=   36.83 mA/cm2
+  V_RHE= -1.644  i_CO=  622.29  i_H2=  105.86 mA/cm2
+  V_RHE= -2.079  i_CO=  508.11  i_H2=  362.11 mA/cm2
+  V_RHE= -2.413  i_CO=  334.16  i_H2=  822.48 mA/cm2
+
+SSE at the initial guess = 0.952571
+
+========================================================================
+Step 2 — fit i0_CO2R and lambda_MHC to i_CO (HER fixed)
+  -> i0_CO2R = 106.5885, lambda_MHC = 1.6000   (SSE_CO = 0.041155, 34 iters)
+
+========================================================================
+Step 3 — fit HER_prefactor and alpha_c_HER to i_H2 (CO2R fixed)
+  -> log10 HER_pf = 13.4102, alpha_c = 0.083481   (SSE_H2 = 0.009175, 24 iters)
+
+========================================================================
+Step 4 — joint Nelder-Mead on all 4 parameters
+  -> SSE = 0.056075 after 90 iterations, 289 objective evaluations total
+
+========================================================================
+FITTED PARAMETERS
+  i0_CO2R       = 106.3849 A/m^2      (initial guess 540)
+  lambda_MHC    = 1.6108 eV         (initial guess 1.8)
+  HER_prefactor = 2.063620e+13 mA/cm^2   (initial guess 2.409e13)
+  alpha_c_HER   = 0.088910            (initial guess 0.0872)
+
+========================================================================
+§17.6 fit-quality acceptance criteria
+  V= -0.816  i_CO    32.99 vs   35.1 (  6.0% PASS, tol 30%)   i_H2    26.77 vs   29.9 ( 10.5% PASS, tol 30%)
+  V= -1.205  i_CO   223.02 vs  189.6 ( 17.6% PASS, tol 30%)   i_H2    46.47 vs   49.3 (  5.7% PASS, tol 30%)
+  V= -1.644  i_CO   243.04 vs  299.1 ( 18.7% PASS, tol 30%)   i_H2   152.22 vs  119.6 ( 27.3% PASS, tol 30%)
+  V= -2.079  i_CO   165.52 vs  204.3 ( 19.0% PASS, tol 30%)   i_H2   457.77 vs  449.9 (  1.7% PASS, tol 30%)
+  V= -2.413  i_CO    88.67 vs   64.6 ( 37.3% PASS, tol 80%)   i_H2   914.50 vs  850.5 (  7.5% PASS, tol 30%)
+
+========================================================================
+§17.8 refit sweep — 89 voltages, Stage-4 residual at the FITTED kinetics
+      (a diagnostic artifact; Stage 5 does NOT warm-start from it)
+
+Sweep complete: 89/89 emitted voltages converged in 3.9 s
+Newton iters/step: mean 1.97  max 5   max ||F||inf = 1.873e-12   sub-steps: 0
+  exported 89 voltages → output_fit/{summary,profiles}_fit_postfit.*
+
+  sweep coverage                 : 89/89 PASS
+  sign changes in di_CO/dV       : 1  (target exactly 1) PASS
+  sign changes in di_H2/dV       : 0  (target 0, strictly monotone) PASS
+  FE_CO peak                     : 82.9 % at V_RHE = -1.175  (target 70-85%, within 100 mV of -1.205) PASS
+  overall per-point tolerances   : PASS
+
+>>> FIT COMPLETE — generate plots and STOP for human review.

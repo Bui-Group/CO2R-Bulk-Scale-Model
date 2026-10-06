@@ -1,0 +1,145 @@
+# Re-run 2026-09-27 after the post-build Stage-5 change (no CO2(aq) flux at the GDL/CL face; guide v7.1, Stage 5 note). Console output follows.
+=== Stage 5 (FITTED kinetics) ===
+i0_CO2R = 106.4457 A/m^2, lambda_MHC = 1.6111 eV
+HER_pf  = 2.064390e+13 mA/cm^2, alpha_c = 0.088920, k_GL = 1.000e-04 m/s
+Cache dir: output_stage5/cache
+Verify vs run_fit.jl output: i0=106.4457  lambda=1.61107  HER_pf=2.064390e+13  alpha_c=0.088920
+
+Mesh: N_CL=80, N_GDL=120
+DOFs: 5*80 + 4*(120+80) + 120 + 80 + 80 = 1480
+sigma_s_eff: GDL 73.16  CL 11.03  interface(harmonic) 19.17 S/m
+D_eff_Cs = 1.1259e-10 m2/s (z_Cs=+1) -> Cs+ migration IS in i_L
+dx_half for the phi_s ghost BC = 1.5395e-06 m
+
+Continuation: anchor V_c = 0.000 (V_RHE = +0.51305), then 32 pre-ramp steps
+              down to V_c = -0.80000, then the 89 output voltages (121 steps total)
+
+ANCHOR V_RHE=+0.51305 : converged=true it=4 |F|=6.335e-11 err=1.075e-10 (rtol)
+  V_RHE=-0.30000  it=1  |F|=1.50e-08  err=1.84e-09  i_CO=    0.00  i_H2=    8.69 mA/cm2  dphiL=-1.55 mV
+  V_RHE=-0.32500  it=2  |F|=1.58e-08  err=1.01e-15  i_CO=    0.00  i_H2=    9.27 mA/cm2  dphiL=-1.65 mV
+  V_RHE=-0.35000  it=2  |F|=1.38e-08  err=1.32e-15  i_CO=    0.01  i_H2=    9.89 mA/cm2  dphiL=-1.74 mV
+  V_RHE=-0.37500  it=2  |F|=1.62e-08  err=2.00e-15  i_CO=    0.01  i_H2=   10.55 mA/cm2  dphiL=-1.85 mV
+  V_RHE=-0.40000  it=2  |F|=1.60e-08  err=1.56e-15  i_CO=    0.02  i_H2=   11.26 mA/cm2  dphiL=-1.96 mV
+  V_RHE=-0.42500  it=2  |F|=1.47e-08  err=2.44e-15  i_CO=    0.05  i_H2=   12.00 mA/cm2  dphiL=-2.07 mV
+  V_RHE=-0.45000  it=2  |F|=1.64e-08  err=3.43e-15  i_CO=    0.08  i_H2=   12.79 mA/cm2  dphiL=-2.19 mV
+  V_RHE=-0.47500  it=2  |F|=1.54e-08  err=6.10e-15  i_CO=    0.15  i_H2=   13.62 mA/cm2  dphiL=-2.32 mV
+  V_RHE=-0.50000  it=2  |F|=2.81e-08  err=1.40e-14  i_CO=    0.26  i_H2=   14.50 mA/cm2  dphiL=-2.46 mV
+  V_RHE=-0.52500  it=2  |F|=3.31e-08  err=4.14e-14  i_CO=    0.43  i_H2=   15.43 mA/cm2  dphiL=-2.61 mV
+  V_RHE=-0.55000  it=2  |F|=3.52e-08  err=1.23e-13  i_CO=    0.72  i_H2=   16.39 mA/cm2  dphiL=-2.77 mV
+  V_RHE=-0.57500  it=2  |F|=3.51e-08  err=3.38e-13  i_CO=    1.16  i_H2=   17.38 mA/cm2  dphiL=-2.95 mV
+  V_RHE=-0.60000  it=2  |F|=3.62e-08  err=7.92e-13  i_CO=    1.83  i_H2=   18.40 mA/cm2  dphiL=-3.16 mV
+  V_RHE=-0.62500  it=2  |F|=3.27e-08  err=1.52e-12  i_CO=    2.81  i_H2=   19.43 mA/cm2  dphiL=-3.40 mV
+  V_RHE=-0.65000  it=2  |F|=4.00e-08  err=2.30e-12  i_CO=    4.20  i_H2=   20.46 mA/cm2  dphiL=-3.67 mV
+  V_RHE=-0.67500  it=2  |F|=3.07e-08  err=2.83e-12  i_CO=    6.12  i_H2=   21.47 mA/cm2  dphiL=-3.99 mV
+  V_RHE=-0.70000  it=2  |F|=3.58e-08  err=4.29e-12  i_CO=    8.69  i_H2=   22.45 mA/cm2  dphiL=-4.35 mV
+  V_RHE=-0.72500  it=2  |F|=3.44e-08  err=1.07e-11  i_CO=   12.05  i_H2=   23.39 mA/cm2  dphiL=-4.76 mV
+  V_RHE=-0.75000  it=2  |F|=3.21e-08  err=2.76e-11  i_CO=   16.30  i_H2=   24.28 mA/cm2  dphiL=-5.22 mV
+  V_RHE=-0.77500  it=2  |F|=3.15e-08  err=7.13e-11  i_CO=   21.55  i_H2=   25.12 mA/cm2  dphiL=-5.71 mV
+  V_RHE=-0.80000  it=2  |F|=2.68e-08  err=2.19e-10  i_CO=   27.91  i_H2=   25.90 mA/cm2  dphiL=-6.24 mV
+  V_RHE=-0.82500  it=2  |F|=2.78e-08  err=3.39e-09  i_CO=   35.42  i_H2=   26.63 mA/cm2  dphiL=-6.79 mV
+  V_RHE=-0.85000  it=2  |F|=3.46e-08  err=3.44e-10  i_CO=   44.12  i_H2=   27.31 mA/cm2  dphiL=-7.35 mV
+  V_RHE=-0.87500  it=2  |F|=2.81e-08  err=3.75e-10  i_CO=   54.04  i_H2=   27.95 mA/cm2  dphiL=-7.91 mV
+  V_RHE=-0.90000  it=2  |F|=2.89e-08  err=2.12e-10  i_CO=   65.15  i_H2=   28.57 mA/cm2  dphiL=-8.45 mV
+  V_RHE=-0.92500  it=2  |F|=3.10e-08  err=4.51e-11  i_CO=   77.44  i_H2=   29.19 mA/cm2  dphiL=-8.97 mV
+  V_RHE=-0.95000  it=2  |F|=2.28e-08  err=9.34e-12  i_CO=   90.87  i_H2=   29.84 mA/cm2  dphiL=-9.48 mV
+  V_RHE=-0.97500  it=2  |F|=3.66e-08  err=1.92e-11  i_CO=  105.39  i_H2=   30.56 mA/cm2  dphiL=-9.97 mV
+  V_RHE=-1.00000  it=2  |F|=3.18e-08  err=5.29e-11  i_CO=  120.90  i_H2=   31.36 mA/cm2  dphiL=-10.46 mV
+  V_RHE=-1.02500  it=2  |F|=3.76e-08  err=7.23e-11  i_CO=  137.22  i_H2=   32.26 mA/cm2  dphiL=-10.94 mV
+  V_RHE=-1.05000  it=2  |F|=3.75e-08  err=6.35e-11  i_CO=  154.17  i_H2=   33.27 mA/cm2  dphiL=-11.41 mV
+  V_RHE=-1.07500  it=2  |F|=2.73e-08  err=6.54e-11  i_CO=  171.50  i_H2=   34.41 mA/cm2  dphiL=-11.87 mV
+  V_RHE=-1.10000  it=2  |F|=3.64e-08  err=3.56e-11  i_CO=  188.96  i_H2=   35.68 mA/cm2  dphiL=-12.31 mV
+  V_RHE=-1.12500  it=2  |F|=3.47e-08  err=2.59e-11  i_CO=  206.27  i_H2=   37.11 mA/cm2  dphiL=-12.74 mV
+  V_RHE=-1.15000  it=2  |F|=3.02e-08  err=1.94e-11  i_CO=  223.17  i_H2=   38.71 mA/cm2  dphiL=-13.14 mV
+  V_RHE=-1.17500  it=2  |F|=3.18e-08  err=1.52e-11  i_CO=  239.39  i_H2=   40.50 mA/cm2  dphiL=-13.51 mV
+  V_RHE=-1.20000  it=2  |F|=3.27e-08  err=1.76e-11  i_CO=  254.69  i_H2=   42.50 mA/cm2  dphiL=-13.85 mV
+  V_RHE=-1.22500  it=2  |F|=3.10e-08  err=8.86e-12  i_CO=  268.86  i_H2=   44.72 mA/cm2  dphiL=-14.16 mV
+  V_RHE=-1.25000  it=2  |F|=3.61e-08  err=7.44e-12  i_CO=  281.71  i_H2=   47.20 mA/cm2  dphiL=-14.43 mV
+  V_RHE=-1.27500  it=2  |F|=2.55e-08  err=4.66e-12  i_CO=  293.13  i_H2=   49.95 mA/cm2  dphiL=-14.68 mV
+  V_RHE=-1.30000  it=2  |F|=2.45e-08  err=5.59e-12  i_CO=  303.03  i_H2=   53.00 mA/cm2  dphiL=-14.90 mV
+  V_RHE=-1.32500  it=2  |F|=3.52e-08  err=2.07e-12  i_CO=  311.39  i_H2=   56.38 mA/cm2  dphiL=-15.08 mV
+  V_RHE=-1.35000  it=2  |F|=3.19e-08  err=1.19e-12  i_CO=  318.23  i_H2=   60.10 mA/cm2  dphiL=-15.24 mV
+  V_RHE=-1.37500  it=2  |F|=2.95e-08  err=6.96e-13  i_CO=  323.61  i_H2=   64.19 mA/cm2  dphiL=-15.37 mV
+  V_RHE=-1.40000  it=2  |F|=3.41e-08  err=4.44e-13  i_CO=  327.66  i_H2=   68.67 mA/cm2  dphiL=-15.48 mV
+  V_RHE=-1.42500  it=2  |F|=4.02e-08  err=1.34e-13  i_CO=  330.50  i_H2=   73.56 mA/cm2  dphiL=-15.58 mV
+  V_RHE=-1.45000  it=2  |F|=3.08e-08  err=4.63e-14  i_CO=  332.29  i_H2=   78.89 mA/cm2  dphiL=-15.65 mV
+  V_RHE=-1.47500  it=2  |F|=3.34e-08  err=1.38e-14  i_CO=  333.17  i_H2=   84.67 mA/cm2  dphiL=-15.72 mV
+  V_RHE=-1.50000  it=2  |F|=3.11e-08  err=3.17e-15  i_CO=  333.30  i_H2=   90.92 mA/cm2  dphiL=-15.77 mV
+  V_RHE=-1.52500  it=2  |F|=5.39e-08  err=5.59e-16  i_CO=  332.82  i_H2=   97.66 mA/cm2  dphiL=-15.82 mV
+  V_RHE=-1.55000  it=2  |F|=7.31e-08  err=3.02e-16  i_CO=  331.83  i_H2=  104.91 mA/cm2  dphiL=-15.86 mV
+  V_RHE=-1.57500  it=1  |F|=7.10e-08  err=8.37e-09  i_CO=  330.44  i_H2=  112.69 mA/cm2  dphiL=-15.89 mV
+  V_RHE=-1.60000  it=2  |F|=5.78e-08  err=1.09e-15  i_CO=  328.72  i_H2=  121.02 mA/cm2  dphiL=-15.93 mV
+  V_RHE=-1.62500  it=2  |F|=5.87e-08  err=1.79e-15  i_CO=  326.73  i_H2=  129.93 mA/cm2  dphiL=-15.96 mV
+  V_RHE=-1.65000  it=2  |F|=7.26e-08  err=2.80e-15  i_CO=  324.50  i_H2=  139.45 mA/cm2  dphiL=-16.00 mV
+  V_RHE=-1.67500  it=2  |F|=6.81e-08  err=4.56e-15  i_CO=  322.06  i_H2=  149.60 mA/cm2  dphiL=-16.03 mV
+  V_RHE=-1.70000  it=2  |F|=6.56e-08  err=1.25e-14  i_CO=  319.43  i_H2=  160.41 mA/cm2  dphiL=-16.07 mV
+  V_RHE=-1.72500  it=2  |F|=7.99e-08  err=7.56e-15  i_CO=  316.61  i_H2=  171.91 mA/cm2  dphiL=-16.11 mV
+  V_RHE=-1.75000  it=2  |F|=5.77e-08  err=8.47e-15  i_CO=  313.62  i_H2=  184.13 mA/cm2  dphiL=-16.15 mV
+  V_RHE=-1.77500  it=2  |F|=6.02e-08  err=1.01e-14  i_CO=  310.45  i_H2=  197.11 mA/cm2  dphiL=-16.19 mV
+  V_RHE=-1.80000  it=2  |F|=6.55e-08  err=1.24e-14  i_CO=  307.10  i_H2=  210.89 mA/cm2  dphiL=-16.23 mV
+  V_RHE=-1.82500  it=2  |F|=5.94e-08  err=1.50e-14  i_CO=  303.56  i_H2=  225.49 mA/cm2  dphiL=-16.27 mV
+  V_RHE=-1.85000  it=2  |F|=7.19e-08  err=1.83e-14  i_CO=  299.84  i_H2=  240.95 mA/cm2  dphiL=-16.32 mV
+  V_RHE=-1.87500  it=2  |F|=6.24e-08  err=2.23e-14  i_CO=  295.93  i_H2=  257.30 mA/cm2  dphiL=-16.37 mV
+  V_RHE=-1.90000  it=2  |F|=7.66e-08  err=2.70e-14  i_CO=  291.82  i_H2=  274.59 mA/cm2  dphiL=-16.42 mV
+  V_RHE=-1.92500  it=2  |F|=7.23e-08  err=3.27e-14  i_CO=  287.52  i_H2=  292.85 mA/cm2  dphiL=-16.48 mV
+  V_RHE=-1.95000  it=2  |F|=6.44e-08  err=3.95e-14  i_CO=  283.02  i_H2=  312.11 mA/cm2  dphiL=-16.53 mV
+  V_RHE=-1.97500  it=2  |F|=6.18e-08  err=4.77e-14  i_CO=  278.31  i_H2=  332.40 mA/cm2  dphiL=-16.59 mV
+  V_RHE=-2.00000  it=2  |F|=5.49e-08  err=5.77e-14  i_CO=  273.41  i_H2=  353.77 mA/cm2  dphiL=-16.65 mV
+  V_RHE=-2.02500  it=2  |F|=6.74e-08  err=6.97e-14  i_CO=  268.30  i_H2=  376.25 mA/cm2  dphiL=-16.71 mV
+  V_RHE=-2.05000  it=2  |F|=6.46e-08  err=8.45e-14  i_CO=  262.98  i_H2=  399.87 mA/cm2  dphiL=-16.77 mV
+  V_RHE=-2.07500  it=2  |F|=5.26e-08  err=1.02e-13  i_CO=  257.47  i_H2=  424.66 mA/cm2  dphiL=-16.83 mV
+  V_RHE=-2.10000  it=2  |F|=6.73e-08  err=1.25e-13  i_CO=  251.76  i_H2=  450.66 mA/cm2  dphiL=-16.90 mV
+  V_RHE=-2.12500  it=2  |F|=7.10e-08  err=1.52e-13  i_CO=  245.86  i_H2=  477.89 mA/cm2  dphiL=-16.96 mV
+  V_RHE=-2.15000  it=2  |F|=5.94e-08  err=1.86e-13  i_CO=  239.76  i_H2=  506.39 mA/cm2  dphiL=-17.02 mV
+  V_RHE=-2.17500  it=2  |F|=7.02e-08  err=2.29e-13  i_CO=  233.49  i_H2=  536.18 mA/cm2  dphiL=-17.09 mV
+  V_RHE=-2.20000  it=2  |F|=7.03e-08  err=2.83e-13  i_CO=  227.03  i_H2=  567.28 mA/cm2  dphiL=-17.15 mV
+  V_RHE=-2.22500  it=2  |F|=7.21e-08  err=3.53e-13  i_CO=  220.42  i_H2=  599.72 mA/cm2  dphiL=-17.21 mV
+  V_RHE=-2.25000  it=2  |F|=6.23e-08  err=4.42e-13  i_CO=  213.64  i_H2=  633.53 mA/cm2  dphiL=-17.28 mV
+  V_RHE=-2.27500  it=2  |F|=6.06e-08  err=5.60e-13  i_CO=  206.73  i_H2=  668.71 mA/cm2  dphiL=-17.33 mV
+  V_RHE=-2.30000  it=2  |F|=6.40e-08  err=7.17e-13  i_CO=  199.68  i_H2=  705.28 mA/cm2  dphiL=-17.39 mV
+  V_RHE=-2.32500  it=2  |F|=7.13e-08  err=9.30e-13  i_CO=  192.52  i_H2=  743.25 mA/cm2  dphiL=-17.44 mV
+  V_RHE=-2.35000  it=2  |F|=5.47e-08  err=1.22e-12  i_CO=  185.27  i_H2=  782.65 mA/cm2  dphiL=-17.49 mV
+  V_RHE=-2.37500  it=2  |F|=5.74e-08  err=1.65e-12  i_CO=  177.93  i_H2=  823.46 mA/cm2  dphiL=-17.53 mV
+  V_RHE=-2.40000  it=2  |F|=7.14e-08  err=2.27e-12  i_CO=  170.53  i_H2=  865.71 mA/cm2  dphiL=-17.57 mV
+  V_RHE=-2.42500  it=2  |F|=6.70e-08  err=3.25e-12  i_CO=  163.09  i_H2=  909.39 mA/cm2  dphiL=-17.60 mV
+  V_RHE=-2.45000  it=2  |F|=6.26e-08  err=4.75e-12  i_CO=  155.64  i_H2=  954.51 mA/cm2  dphiL=-17.62 mV
+  V_RHE=-2.47500  it=2  |F|=7.34e-08  err=7.38e-12  i_CO=  148.19  i_H2= 1001.07 mA/cm2  dphiL=-17.64 mV
+  V_RHE=-2.50000  it=2  |F|=7.10e-08  err=1.16e-11  i_CO=  140.77  i_H2= 1049.09 mA/cm2  dphiL=-17.64 mV
+Sweep done: 89 emitted voltages, 10.8 s
+
+========================================================================
+STAGE 5 SUMMARY
+========================================================================
+Voltages converged : 89 / 89
+max |F|inf         : 7.985e-08   (assertion tol 1e-06)
+mean Newton iters  : 1.98  (max 2)
+sub-steps triggered: 0
+i_CO peak          : 333.30 mA/cm2 at V_RHE = -1.500
+FE_CO peak         : 85.7 % at V_RHE = -1.225
+
+Per-voltage potential and charge diagnostics:
+V_RHE     i_tot      dphi_s tot  GDL share   dphi_L      |di_s|/i    |di_ion|/i  phi_L mono 
+-0.8250      62.1       3.10 mV     88.7 %    -6.79 mV   1.61e-12   3.66e-15   true
+-1.2000     297.2      14.83 mV     88.7 %   -13.85 mV   7.35e-13   4.59e-16   true
+-1.6500     463.9      23.11 mV     88.8 %   -16.00 mV   1.77e-13   3.92e-16   true
+-2.0750     682.1      34.08 mV     88.6 %   -16.83 mV   6.70e-13   9.33e-16   true
+-2.4250    1072.5      53.54 mV     88.7 %   -17.60 mV   6.37e-13   1.70e-16   true
+-2.5000    1189.9      59.36 mV     88.7 %   -17.64 mV   1.34e-13   1.83e-15   true
+
+------------------------------------------------------------------------
+Check 1  solid ohmic drop phi_s_CL[N]-V_applied  : 0.43 .. 59.36 mV (guide 5-80)
+Check 2  GDL share of the solid drop             : 88.4 .. 89.1 % (guide 80-90)
+Check 3  |dphi_L| at i_tot > 500 mA/cm2          : 16.19 .. 17.64 mV (guide 5-25, ~15 typical)
+         sign of dphi_L (guide: negative)        : phi_L[1] = -16.832 mV at V_RHE=-2.075
+Check 4  |i_s_face[1]| == i_far_total            : max rel err 3.032e-11 (guide <= 1e-6)
+Check 6  ionic current conservation at x=L_CL    : max rel err 3.135e-12 (guide < 0.01)
+Check 5  i drop vs Stage-4-at-fitted-kinetics    : -18.4 .. 1.3 % (guide 10-30 at high i)
+         V_RHE=-1.200  i_CO   221.11 ->   254.69 (+15.2%)  i_H2    45.99 ->    42.50 (-7.6%)
+         V_RHE=-1.650  i_CO   242.39 ->   324.50 (+33.9%)  i_H2   154.86 ->   139.45 (-10.0%)
+         V_RHE=-2.075  i_CO   166.44 ->   257.47 (+54.7%)  i_H2   453.93 ->   424.66 (-6.4%)
+         V_RHE=-2.425  i_CO    86.13 ->   163.09 (+89.4%)  i_H2   936.14 ->   909.39 (-2.9%)
+Check 7  i_CO derivative sign changes            : 1 (target <= 1)
+         i_H2 strictly monotone in |V|          : true
+         max single-step |di_CO|/i_CO past onset: 24.58 % over 67 voltages (spikes > 5% = branch hop)
+         max single-step |di_H2|/i_H2 past onset: 7.42 %
+         i_CO shape: rises to peak 333.3 mA/cm2 at V_RHE=-1.500 then falls to 140.8
+========================================================================

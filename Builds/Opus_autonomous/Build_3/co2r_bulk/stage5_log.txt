@@ -1,0 +1,62 @@
+# Re-run 2026-09-27 after the post-build Stage-5 change (no CO2(aq) flux at the GDL/CL face; guide v7.1, Stage 5 note). Console output follows.
+=== Stage 5 ===
+i0_CO2R = 106.5923 A/m², lambda_MHC = 1.6116 eV
+HER_pf  = 2.063148e+13, alpha_c = 0.088931, k_GL = 1.000e-04 m/s
+Cache dir: output_stage5/cache
+mesh: N_CL = 80, N_GDL = 120, DOFs = 1480 (expect 1480 at 80/120)
+continuation chain: anchor at V_c = 0 (V_RHE = +0.51305), 32 pre-ramp steps, 89 output voltages (122 total)
+
+∂F/∂V structure probe: 1 nonzero entries (guide: exactly 1) — row [1201]  PASS
+
+wall time: 17.9 s
+exported CSVs for stage5 (89 voltages)
+
+=== Stage 5 summary ===
+converged 89/89 output voltages, mean iters = 1.98, max ||F||inf = 8.310e-08
+
+-- §11 Stage 5 checks 1–6 / §9.5.8 diagnostics --
+    V_RHE      i_CO      i_H2  dphi_L/mV   phi_L[1]    drop/mV   GDLshare      |di|/i   ionic_rel
+   -0.400      0.02     11.25     -1.955    -0.0020       0.56       0.89    2.24e-11    3.28e-15
+   -0.600      1.82     18.39     -3.161    -0.0032       1.00       0.89    1.15e-11    9.84e-16
+   -0.800     27.88     25.90     -6.240    -0.0062       2.68       0.89    2.36e-12    1.69e-15
+   -1.000    120.87     31.35    -10.456    -0.0105       7.62       0.88    1.60e-12    8.96e-16
+   -1.200    254.79     42.48    -13.848    -0.0138      14.83       0.89    3.24e-13    0.00e+00
+   -1.400    327.95     68.63    -15.487    -0.0155      19.74       0.89    1.24e-12    1.15e-16
+   -1.600    329.08    120.96    -15.932    -0.0159      22.41       0.89    3.09e-13    2.02e-16
+   -1.800    307.44    210.81    -16.232    -0.0162      25.85       0.89    3.13e-13    0.00e+00
+   -2.000    273.72    353.70    -16.649    -0.0166      31.33       0.89    4.93e-14    5.80e-16
+   -2.200    227.30    567.23    -17.152    -0.0172      39.70       0.89    4.72e-13    2.29e-16
+   -2.400    170.74    865.71    -17.569    -0.0176      51.75       0.89    4.47e-13    1.76e-16
+
+-- aggregate assertions --
+max |Δi|/i (solid charge balance, need ≤ 1e-6)          = 2.242e-11  PASS
+max ionic-boundary rel err (need < 0.01)                = 3.144e-12  PASS
+|Δφ_L| at i_total > 500 mA/cm²: 16.19 – 17.64 mV (need 5–25) PASS
+Δφ_L sign (converged should be negative: φ_L[1] < 0)     : negative PASS
+solid ohmic drop range                                  = 0.4 – 59.4 mV (guide 5–80)
+GDL share of the solid drop                             = 0.88 – 0.89 (guide 0.80–0.90)
+c_Cs range in the reaction zone                         = 625 – 6013 mol/m³ (guide 2000–6000)
+sign changes di_CO/dV = 1 (need 1), di_H2/dV = 0 (need 0)   PASS
+FE_CO peak = 85.7% at V_RHE = -1.225
+φ_L sign flips between neighbours                        = 0 (need 0)
+
+-- §9.5.8 AD validation: FD spot check at a converged mild-voltage state --
+  col     3: max|FD − AD|/scale = 2.088e-10
+  col   401: max|FD − AD|/scale = 6.022e-10
+  col   900: max|FD − AD|/scale = 4.827e-10
+  col  1205: max|FD − AD|/scale = 5.264e-10
+  col  1325: max|FD − AD|/scale = 5.264e-10
+  col  1405: max|FD − AD|/scale = 5.674e-13
+  -> PASS
+
+-- Stage 4 → Stage 5 current change (§11 Stage 5 check 5) --
+V_RHE=-1.200  S4fit: i_CO= 221.22 i_H2=  45.97 | S5: i_CO= 254.79 i_H2=  42.48  (×1.15, ×0.92)
+            c_CO3[1] 1935 → 1205, c_Cs[1] 3525 → 2044, H_eff[1] 7.15 → 10.34, c_CO2[1] 6.06 → 8.45
+V_RHE=-1.650  S4fit: i_CO= 242.65 i_H2= 154.80 | S5: i_CO= 324.85 i_H2= 139.39  (×1.34, ×0.90)
+            c_CO3[1] 2547 → 1603, c_Cs[1] 4759 → 2855, H_eff[1] 5.26 → 8.45, c_CO2[1] 4.34 → 6.50
+V_RHE=-2.075  S4fit: i_CO= 166.64 i_H2= 453.89 | S5: i_CO= 257.77 i_H2= 424.59  (×1.55, ×0.94)
+            c_CO3[1] 3427 → 2064, c_Cs[1] 6603 → 3818, H_eff[1] 3.32 → 6.65, c_CO2[1] 2.62 → 4.85
+V_RHE=-2.425  S4fit: i_CO=  86.24 i_H2= 936.21 | S5: i_CO= 163.29 i_H2= 909.40  (×1.89, ×0.97)
+            c_CO3[1] 4590 → 2838, c_Cs[1] 9370 → 5526, H_eff[1] 1.66 → 4.34, c_CO2[1] 1.10 → 2.67
+
+STAGE 5 COMPLETE.

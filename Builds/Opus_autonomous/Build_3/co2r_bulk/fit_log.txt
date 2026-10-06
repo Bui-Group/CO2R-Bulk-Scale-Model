@@ -1,0 +1,73 @@
+=== Stage Fit ===
+i0_CO2R = 540.0000 A/m², lambda_MHC = 1.8000 eV
+HER_pf  = 2.409000e+13, alpha_c = 0.087200, k_GL = 1.000e-04 m/s
+Cache dir: output_fit/cache
+WARNING: existing cache found — verify kinetics match before reusing!
+
+── §17.3 pre-fitting polish at the 5 experimental voltages ──
+  V_RHE = -0.816 → 3 iters, ||F||inf = 7.43e-13
+  V_RHE = -1.205 → 2 iters, ||F||inf = 7.91e-13
+  V_RHE = -1.644 → 2 iters, ||F||inf = 9.21e-13
+  V_RHE = -2.079 → 2 iters, ||F||inf = 1.43e-12
+  V_RHE = -2.413 → 3 iters, ||F||inf = 1.77e-12
+
+── §17.5 Step 1: one-at-a-time sensitivity around the initial guess ──
+  base SSE = 0.9526
+  i0_CO2R        ×0.500 → SSE 0.3786
+  i0_CO2R        ×2.000 → SSE 1.7364
+  λ_MHC          ×0.900 → SSE 1.1696
+  λ_MHC          ×1.111 → SSE 0.9467
+  log10 HER_pf   ×0.980 → SSE 1.6752
+  log10 HER_pf   ×1.020 → SSE 0.7245
+  α_c            ×0.800 → SSE 2.2458
+  α_c            ×1.250 → SSE 0.7777
+
+── §17.5 Step 2: CO₂R parameters (i0, λ) with HER fixed ──
+
+step 2: i0=109.796  λ=1.6065  log10HERpf=13.3818 (2.4090e+13)  α_c=0.08720   SSE=0.059688
+     V_RHE    iCO_mod    iCO_exp    iH2_mod    iH2_exp   errCO%   errH2%
+    -0.816      33.67      35.10      29.40      29.90     -4.1     -1.7
+    -1.205     226.89     189.60      50.26      49.30     19.7      1.9
+    -1.644     245.52     299.10     160.32     119.60    -17.9     34.0
+    -2.079     166.41     204.30     470.39     449.90    -18.5      4.6
+    -2.413      89.40      64.60     926.92     850.50     38.4      9.0
+
+── §17.5 Step 3: HER parameters (log10 HER_pf, α_c) with CO₂R fixed ──
+
+step 3: i0=109.796  λ=1.6065  log10HERpf=13.3180 (2.0796e+13)  α_c=0.08909   SSE=0.056645
+     V_RHE    iCO_mod    iCO_exp    iH2_mod    iH2_exp   errCO%   errH2%
+    -0.816      34.31      35.10      26.88      29.90     -2.2    -10.1
+    -1.205     228.14     189.60      46.65      49.30     20.3     -5.4
+    -1.644     247.56     299.10     153.48     119.60    -17.2     28.3
+    -2.079     168.18     204.30     462.74     449.90    -17.7      2.9
+    -2.413      89.67      64.60     925.16     850.50     38.8      8.8
+
+── §17.5 Step 4: joint 4-parameter Nelder-Mead ──
+
+FITTED: i0=106.592  λ=1.6116  log10HERpf=13.3145 (2.0631e+13)  α_c=0.08893   SSE=0.056076
+     V_RHE    iCO_mod    iCO_exp    iH2_mod    iH2_exp   errCO%   errH2%
+    -0.816      32.94      35.10      26.79      29.90     -6.2    -10.4
+    -1.205     223.15     189.60      46.48      49.30     17.7     -5.7
+    -1.644     243.37     299.10     152.26     119.60    -18.6     27.3
+    -2.079     165.73     204.30     458.05     449.90    -18.9      1.8
+    -2.413      88.75      64.60     915.19     850.50     37.4      7.6
+
+Nelder-Mead: 258 objective evaluations total, final SSE = 0.056076
+wrote fitted_params.jl
+
+── §17.8 89-voltage Stage-4 refit sweep at the fitted kinetics ──
+refit sweep: 89/89 converged, mean iters = 1.97, max ||F||inf = 2.364e-12
+exported CSVs for fit (89 voltages)
+
+── §17.6 acceptance criteria ──
+  V=-0.816  |err i_CO| =   6.2% (tol 30)  |err i_H2| =  10.4% (tol 30)  PASS
+  V=-1.205  |err i_CO| =  17.7% (tol 30)  |err i_H2| =   5.7% (tol 30)  PASS
+  V=-1.644  |err i_CO| =  18.6% (tol 30)  |err i_H2| =  27.3% (tol 30)  PASS
+  V=-2.079  |err i_CO| =  18.9% (tol 30)  |err i_H2| =   1.8% (tol 30)  PASS
+  V=-2.413  |err i_CO| =  37.4% (tol 80)  |err i_H2| =   7.6% (tol 30)  PASS
+  FE_CO peak = 82.9% at V_RHE = -1.175 (target 70–85%, within 100 mV of −1.205)
+  sign changes in di_CO/dV = 1 (target 1); in di_H2/dV = 0 (target 0)
+  sweep coverage = 89/89
+  OVERALL per-point tolerances: PASS
+
+FIT STEP COMPLETE.

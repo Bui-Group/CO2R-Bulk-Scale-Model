@@ -1,0 +1,153 @@
+# Re-run 2026-09-27 after the post-build Stage-5 change (no CO2(aq) flux at the GDL/CL face; guide v7.1, Stage 5 note). Console output follows.
+=== Stage 5 ===
+i0_CO2R = 106.6037 A/m², λ_MHC = 1.6114 eV
+HER_pf  = 2.063185e+13, α_c = 0.088942, k_GL = 1.000e-04
+Cache dir: output_stage5/cache
+mesh: N_CL=80 N_GDL=120 ; DOFs=1480 (expect 1480)
+σ_s_eff: GDL 73.16 S/m, CL 11.03 S/m ; D_eff_Cs = 1.126e-10 m²/s
+pre-anchor ramp: V_c = 0 → -0.81305 in 33 steps of -0.02464 V; then the 89 grid points
+anchor guess: φ_s = 0.000000 V vs SHE on GDL+CL, φ_L = 0
+‖F‖∞ at the V_c = 0 anchor guess = 1.502e-01
+∂F/∂V structure probe: 1 nonzero entries (Stage 5 expects exactly 1)
+anchor  V=  0.5131  iters=  4  ‖F‖∞=5.910e-11  err=1.06e-10
+step  33 V= -0.3000 iters= 2 ‖F‖∞=1.42e-08 err=1.38e-15 θ=6.18e-08
+step  34 V= -0.3250 iters= 2 ‖F‖∞=1.70e-08 err=1.95e-15 θ=7.83e-08
+step  35 V= -0.3500 iters= 2 ‖F‖∞=1.65e-08 err=2.32e-15 θ=8.87e-08
+step  36 V= -0.3750 iters= 2 ‖F‖∞=1.53e-08 err=1.90e-15 θ=6.93e-08
+step  37 V= -0.4000 iters= 2 ‖F‖∞=1.40e-08 err=1.92e-15 θ=6.70e-08
+step  38 V= -0.4250 iters= 2 ‖F‖∞=1.79e-08 err=1.55e-15 θ=5.12e-08
+step  39 V= -0.4500 iters= 2 ‖F‖∞=1.82e-08 err=2.78e-15 θ=8.43e-08
+step  40 V= -0.4750 iters= 2 ‖F‖∞=1.68e-08 err=5.13e-15 θ=1.31e-07
+step  41 V= -0.5000 iters= 2 ‖F‖∞=2.96e-08 err=1.41e-14 θ=2.58e-07
+step  42 V= -0.5250 iters= 2 ‖F‖∞=2.96e-08 err=4.09e-14 θ=4.49e-07
+step  43 V= -0.5500 iters= 2 ‖F‖∞=3.14e-08 err=1.23e-13 θ=7.74e-07
+step  44 V= -0.5750 iters= 2 ‖F‖∞=2.80e-08 err=3.38e-13 θ=1.26e-06
+step  45 V= -0.6000 iters= 2 ‖F‖∞=3.32e-08 err=7.92e-13 θ=1.92e-06
+step  46 V= -0.6250 iters= 2 ‖F‖∞=3.02e-08 err=1.52e-12 θ=2.69e-06
+step  47 V= -0.6500 iters= 2 ‖F‖∞=3.46e-08 err=2.30e-12 θ=3.46e-06
+step  48 V= -0.6750 iters= 2 ‖F‖∞=3.94e-08 err=2.83e-12 θ=4.15e-06
+step  49 V= -0.7000 iters= 2 ‖F‖∞=3.09e-08 err=4.29e-12 θ=5.45e-06
+step  50 V= -0.7250 iters= 2 ‖F‖∞=3.22e-08 err=1.07e-11 θ=7.22e-06
+step  51 V= -0.7500 iters= 2 ‖F‖∞=3.74e-08 err=2.76e-11 θ=8.98e-06
+step  52 V= -0.7750 iters= 2 ‖F‖∞=3.06e-08 err=7.14e-11 θ=1.13e-05
+step  53 V= -0.8000 iters= 2 ‖F‖∞=3.68e-08 err=2.19e-10 θ=1.45e-05
+step  54 V= -0.8250 iters= 2 ‖F‖∞=3.25e-08 err=3.41e-09 θ=1.76e-05
+step  55 V= -0.8500 iters= 2 ‖F‖∞=3.17e-08 err=3.44e-10 θ=6.15e-06
+step  56 V= -0.8750 iters= 2 ‖F‖∞=3.45e-08 err=3.76e-10 θ=3.25e-05
+step  57 V= -0.9000 iters= 2 ‖F‖∞=3.15e-08 err=2.14e-10 θ=2.68e-05
+step  58 V= -0.9250 iters= 2 ‖F‖∞=2.97e-08 err=4.49e-11 θ=7.86e-06
+step  59 V= -0.9500 iters= 2 ‖F‖∞=3.09e-08 err=9.32e-12 θ=2.20e-06
+step  60 V= -0.9750 iters= 2 ‖F‖∞=3.18e-08 err=1.94e-11 θ=2.98e-06
+step  61 V= -1.0000 iters= 2 ‖F‖∞=3.14e-08 err=5.28e-11 θ=7.43e-06
+step  62 V= -1.0250 iters= 2 ‖F‖∞=3.10e-08 err=7.25e-11 θ=1.05e-05
+step  63 V= -1.0500 iters= 2 ‖F‖∞=3.02e-08 err=6.35e-11 θ=1.11e-05
+step  64 V= -1.0750 iters= 2 ‖F‖∞=3.84e-08 err=6.43e-11 θ=7.93e-06
+step  65 V= -1.1000 iters= 2 ‖F‖∞=3.06e-08 err=3.56e-11 θ=8.48e-06
+step  66 V= -1.1250 iters= 2 ‖F‖∞=2.66e-08 err=2.60e-11 θ=7.20e-06
+step  67 V= -1.1500 iters= 2 ‖F‖∞=3.75e-08 err=1.95e-11 θ=6.24e-06
+step  68 V= -1.1750 iters= 2 ‖F‖∞=3.21e-08 err=1.52e-11 θ=5.33e-06
+step  69 V= -1.2000 iters= 2 ‖F‖∞=3.38e-08 err=1.70e-11 θ=3.36e-06
+step  70 V= -1.2250 iters= 2 ‖F‖∞=2.89e-08 err=8.89e-12 θ=4.23e-06
+step  71 V= -1.2500 iters= 2 ‖F‖∞=3.47e-08 err=7.37e-12 θ=3.22e-06
+step  72 V= -1.2750 iters= 2 ‖F‖∞=3.76e-08 err=4.67e-12 θ=3.32e-06
+step  73 V= -1.3000 iters= 2 ‖F‖∞=2.69e-08 err=5.95e-12 θ=1.79e-06
+step  74 V= -1.3250 iters= 2 ‖F‖∞=2.70e-08 err=2.07e-12 θ=2.27e-06
+step  75 V= -1.3500 iters= 2 ‖F‖∞=3.21e-08 err=1.19e-12 θ=1.87e-06
+step  76 V= -1.3750 iters= 2 ‖F‖∞=2.95e-08 err=7.04e-13 θ=1.20e-06
+step  77 V= -1.4000 iters= 2 ‖F‖∞=3.40e-08 err=4.31e-13 θ=7.19e-07
+step  78 V= -1.4250 iters= 2 ‖F‖∞=3.33e-08 err=1.34e-13 θ=6.61e-07
+step  79 V= -1.4500 iters= 2 ‖F‖∞=3.14e-08 err=4.67e-14 θ=4.42e-07
+step  80 V= -1.4750 iters= 2 ‖F‖∞=2.38e-08 err=1.39e-14 θ=2.51e-07
+step  81 V= -1.5000 iters= 2 ‖F‖∞=3.15e-08 err=3.28e-15 θ=1.24e-07
+step  82 V= -1.5250 iters= 2 ‖F‖∞=7.15e-08 err=6.44e-16 θ=4.50e-08
+step  83 V= -1.5500 iters= 2 ‖F‖∞=6.99e-08 err=2.48e-16 θ=2.10e-08
+step  84 V= -1.5750 iters= 1 ‖F‖∞=7.10e-08 err=8.35e-09 θ=3.37e-05
+step  85 V= -1.6000 iters= 2 ‖F‖∞=6.71e-08 err=1.17e-15 θ=9.34e-08
+step  86 V= -1.6250 iters= 2 ‖F‖∞=6.48e-08 err=1.70e-15 θ=1.02e-07
+step  87 V= -1.6500 iters= 2 ‖F‖∞=5.52e-08 err=2.84e-15 θ=1.30e-07
+step  88 V= -1.6750 iters= 2 ‖F‖∞=7.11e-08 err=4.80e-15 θ=1.59e-07
+step  89 V= -1.7000 iters= 2 ‖F‖∞=5.38e-08 err=1.34e-14 θ=2.07e-07
+step  90 V= -1.7250 iters= 2 ‖F‖∞=6.33e-08 err=7.47e-15 θ=2.22e-07
+step  91 V= -1.7500 iters= 2 ‖F‖∞=5.32e-08 err=8.47e-15 θ=2.51e-07
+step  92 V= -1.7750 iters= 2 ‖F‖∞=7.09e-08 err=1.02e-14 θ=2.77e-07
+step  93 V= -1.8000 iters= 2 ‖F‖∞=5.42e-08 err=1.24e-14 θ=3.07e-07
+step  94 V= -1.8250 iters= 2 ‖F‖∞=7.15e-08 err=1.51e-14 θ=3.39e-07
+step  95 V= -1.8500 iters= 2 ‖F‖∞=5.89e-08 err=1.83e-14 θ=3.74e-07
+step  96 V= -1.8750 iters= 2 ‖F‖∞=6.84e-08 err=2.23e-14 θ=4.13e-07
+step  97 V= -1.9000 iters= 2 ‖F‖∞=5.45e-08 err=2.71e-14 θ=4.58e-07
+step  98 V= -1.9250 iters= 2 ‖F‖∞=6.35e-08 err=3.27e-14 θ=5.05e-07
+step  99 V= -1.9500 iters= 2 ‖F‖∞=5.93e-08 err=3.96e-14 θ=5.58e-07
+step 100 V= -1.9750 iters= 2 ‖F‖∞=6.32e-08 err=4.78e-14 θ=6.18e-07
+step 101 V= -2.0000 iters= 2 ‖F‖∞=5.54e-08 err=5.78e-14 θ=6.84e-07
+step 102 V= -2.0250 iters= 2 ‖F‖∞=7.13e-08 err=6.99e-14 θ=7.58e-07
+step 103 V= -2.0500 iters= 2 ‖F‖∞=5.14e-08 err=8.46e-14 θ=8.40e-07
+step 104 V= -2.0750 iters= 2 ‖F‖∞=6.58e-08 err=1.03e-13 θ=9.34e-07
+step 105 V= -2.1000 iters= 2 ‖F‖∞=5.82e-08 err=1.25e-13 θ=1.04e-06
+step 106 V= -2.1250 iters= 2 ‖F‖∞=7.07e-08 err=1.52e-13 θ=1.16e-06
+step 107 V= -2.1500 iters= 2 ‖F‖∞=6.84e-08 err=1.87e-13 θ=1.29e-06
+step 108 V= -2.1750 iters= 2 ‖F‖∞=6.07e-08 err=2.29e-13 θ=1.45e-06
+step 109 V= -2.2000 iters= 2 ‖F‖∞=5.48e-08 err=2.84e-13 θ=1.63e-06
+step 110 V= -2.2250 iters= 2 ‖F‖∞=6.82e-08 err=3.54e-13 θ=1.83e-06
+step 111 V= -2.2500 iters= 2 ‖F‖∞=6.92e-08 err=4.44e-13 θ=2.08e-06
+step 112 V= -2.2750 iters= 2 ‖F‖∞=6.09e-08 err=5.62e-13 θ=2.36e-06
+step 113 V= -2.3000 iters= 2 ‖F‖∞=6.70e-08 err=7.20e-13 θ=2.70e-06
+step 114 V= -2.3250 iters= 2 ‖F‖∞=6.85e-08 err=9.34e-13 θ=3.11e-06
+step 115 V= -2.3500 iters= 2 ‖F‖∞=6.74e-08 err=1.23e-12 θ=3.62e-06
+step 116 V= -2.3750 iters= 2 ‖F‖∞=6.18e-08 err=1.66e-12 θ=4.28e-06
+step 117 V= -2.4000 iters= 2 ‖F‖∞=6.31e-08 err=2.28e-12 θ=5.10e-06
+step 118 V= -2.4250 iters= 2 ‖F‖∞=6.29e-08 err=3.27e-12 θ=6.29e-06
+step 119 V= -2.4500 iters= 2 ‖F‖∞=7.31e-08 err=4.78e-12 θ=7.79e-06
+step 120 V= -2.4750 iters= 2 ‖F‖∞=7.34e-08 err=7.43e-12 θ=1.01e-05
+step 121 V= -2.5000 iters= 2 ‖F‖∞=4.77e-08 err=1.17e-11 θ=1.32e-05
+
+sweep done: 89 emitted, 121 chain pts, 0 sub-steps, 10.2 s, 2.01 iters/step
+
+=== Stage 5 summary ===
+converged 89 / 89 output voltages (121 chain points)
+max ‖F‖∞ = 7.344e-08 ; mean Newton iters = 1.99 ; wall = 10.2 s ; sub-steps = 0
+
+── Physicality checks ──
+pH range over sweep : 8.64 – 12.81
+min c_CO2(aq)       : 2.1940 mol/m³
+pH(x=0) = 12.81  →  pH(x=L_CL) = 11.13   (must DECREASE toward electrolyte)
+c_CO2: x=0 2.1940 → x=L_CL 6.4896 mol/m³
+c_OH : x=0 3.5661e+02 → x=L_CL 7.3699e+00 mol/m³ (bulk eq 9.288e-03)
+sign changes di_CO/dV = 1 (target 1) ; di_H2/dV = 0 (target 0)
+peak FE_CO = 85.7 % at V_RHE = -1.225
+i_tot at V_RHE=-2.500 : 1190.49 mA/cm² (i_CO 140.87, i_H2 1049.63)
+global CO₂(aq) balance = -6.681e-18 ; OH⁻ balance = 1.610e-12 mol/m²/s (tol 1e-6)
+J_OH(L_CL) = +1.0682e-03 (should be >0, leaving) ; J_CO2 = -3.7790e-04 (should be <0)
+Biot numbers k_MT·L_CL/D_eff = [4.86, 5.71, 9.01, 9.78, 7.67] (want O(0.1–10))
+
+── Stage 5 potential / charge checks ──
+  V_RHE  i_tot[mA/cm²]  Δφ_L[mV]  φ_s(L_CL)−V_app[mV]  GDL share  |Δi|/i solid  rel.err ionic
+  -0.300         8.69    -1.5540                0.431      89.2%      1.10e-11       1.24e-14
+  -0.775        46.67    -5.7124                2.327      88.8%      1.01e-11       2.44e-16
+  -1.200       297.35   -13.8497               14.838      88.7%      4.18e-13       4.59e-16
+  -1.650       464.30   -16.0001               23.129      88.8%      1.63e-12       5.88e-16
+  -2.100       702.83   -16.8971               35.115      88.6%      1.42e-12       2.59e-16
+  -2.500      1190.49   -17.6428               59.390      88.7%      4.90e-13       3.36e-15
+|Δφ_L| at i_tot > 500 mA/cm²: 16.19 – 17.64 mV (target 5–25 mV)
+max |Δi|/i solid  = 3.204e-11 (target ≤ 1e-6)
+max rel.err ionic = 1.301e-12 (target < 0.01, expect < 0.001)
+sign of Δφ_L (φ_L[1] − φ_L[N_CL]) at the deepest V: -17.6428 mV (expect negative)
+sign changes di_CO/dV = 1 (target 1) ; di_H2/dV = 0 (target 0)
+
+── Stage 4 (fitted kinetics) → Stage 5 current change ──
+  V_RHE   i_CO_S4  i_CO_S5  ratio    i_H2_S4  i_H2_S5  ratio
+  -0.775    21.89    21.55  0.985     25.40    25.12  0.989
+  -1.200   221.27   254.86  1.152     45.99    42.49  0.924
+  -1.650   242.64   324.85  1.339    154.87   139.45  0.900
+  -2.100   160.87   252.02  1.567    480.58   450.81  0.938
+  -2.500    71.21   140.87  1.978   1077.72  1049.63  0.974
+
+── vs experiment (Romiluyi et al. 2023) ──
+  V_RHE    i_CO_mod  i_CO_exp   err%     i_H2_mod  i_H2_exp   err%
+  -0.825     35.418    35.100     +0.9     26.632    29.900    -10.9
+  -1.200    254.860   189.600    +34.4     42.492    49.300    -13.8
+  -1.650    324.848   299.100     +8.6    139.451   119.600    +16.6
+  -2.075    257.735   204.300    +26.2    424.802   449.900     -5.6
+  -2.425    163.222    64.600   +152.7    909.833   850.500     +7.0
+
+Stage 5 complete — STOP for review.
+exit=0

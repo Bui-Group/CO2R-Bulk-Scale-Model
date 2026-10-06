@@ -1,0 +1,71 @@
+# Re-run 2026-09-27 after the post-build Stage-5 change (no CO2(aq) flux at the GDL/CL face; guide v7.1, Stage 5 note). Console output follows.
+=== Stage 5 ===
+i0_CO2R = 106.3849 A/m^2, lambda_MHC = 1.6108 eV
+HER_pf  = 2.063620e+13, alpha_c = 0.088910, k_GL = 1.000e-04 m/s
+(fitted values loaded from output_fit/fitted_params.txt)
+Cache dir: output_stage5/cache
+
+V_c chain: anchor at V_RHE=0.51305 (V_c=0), 33 pre-anchor ramp steps of -0.024638 V,
+           then the 89 output voltages — 122 chain points total.
+
+
+Sweep complete: 89/89 emitted voltages converged in 11.1 s
+Newton iters/step: mean 1.99  max 2   max ||F||inf = 7.770e-08   sub-steps: 0
+  exported 89 voltages → output_stage5/{summary,profiles}_stage5.*
+
+========================================================================
+Stage 5 physicality checks (§11) and §9.5.8 checklist diagnostics
+
+1/2. Solid ohmic drop and its GDL/CL split (§11 checks 1-2)
+     expect 5-80 mV total (~50 mV at 1 A/cm2); GDL takes 80-90 %
+  V= -0.825  i= 0.062 A/cm2  drop_tot=  3.10 mV  GDL share= 88.7 %
+  V= -1.200  i= 0.297 A/cm2  drop_tot= 14.83 mV  GDL share= 88.7 %
+  V= -1.650  i= 0.464 A/cm2  drop_tot= 23.10 mV  GDL share= 88.8 %
+  V= -2.075  i= 0.682 A/cm2  drop_tot= 34.06 mV  GDL share= 88.6 %
+  V= -2.425  i= 1.072 A/cm2  drop_tot= 53.51 mV  GDL share= 88.7 %
+  V= -2.500  i= 1.189 A/cm2  drop_tot= 59.33 mV  GDL share= 88.7 %
+
+3. phi_L profile: monotone across the CL, magnitude 5-50 mV (§11 check 3)
+   §9.5.8: |dphi_L| in 5-25 mV at i_total > 500 mA/cm2, sign NEGATIVE
+  V= -0.825  i=   62.1 mA/cm2  phi_L:   -6.794 (x=0)   -5.293 (mid)   +0.000 mV (x=L)  dphi_L= -6.794 mV  monotone=true
+  V= -1.200  i=  297.1 mA/cm2  phi_L:  -13.848 (x=0)  -11.113 (mid)   +0.000 mV (x=L)  dphi_L=-13.848 mV  monotone=true
+  V= -1.650  i=  463.7 mA/cm2  phi_L:  -15.996 (x=0)  -12.663 (mid)   +0.000 mV (x=L)  dphi_L=-15.996 mV  monotone=true
+  V= -2.075  i=  681.8 mA/cm2  phi_L:  -16.831 (x=0)  -13.235 (mid)   +0.000 mV (x=L)  dphi_L=-16.831 mV  monotone=true
+  V= -2.425  i= 1071.9 mA/cm2  phi_L:  -17.599 (x=0)  -13.751 (mid)   +0.000 mV (x=L)  dphi_L=-17.599 mV  monotone=true
+  V= -2.500  i= 1189.2 mA/cm2  phi_L:  -17.643 (x=0)  -13.768 (mid)   +0.000 mV (x=L)  dphi_L=-17.643 mV  monotone=true
+
+4/6. Charge conservation (§11 checks 4 and 6)
+     |i_s_face[1]| = i_far_total to <= 1e-6 ;  ionic rel_err at x=L_CL < 0.01
+  V= -0.825  i_far=+6.206105e+02  i_s[1]=-6.206105e+02  |di|/i=1.354e-12   i_ionic_R=-6.206105e+02  rel=3.664e-16
+  V= -1.200  i_far=+2.971496e+03  i_s[1]=-2.971496e+03  |di|/i=1.604e-13   i_ionic_R=-2.971496e+03  rel=9.182e-16
+  V= -1.650  i_far=+4.637347e+03  i_s[1]=-4.637347e+03  |di|/i=1.994e-12   i_ionic_R=-4.637347e+03  rel=3.922e-16
+  V= -2.075  i_far=+6.817785e+03  i_s[1]=-6.817785e+03  |di|/i=1.215e-12   i_ionic_R=-6.817785e+03  rel=2.668e-16
+  V= -2.425  i_far=+1.071887e+04  i_s[1]=-1.071887e+04  |di|/i=7.221e-13   i_ionic_R=-1.071887e+04  rel=5.091e-16
+  V= -2.500  i_far=+1.189199e+04  i_s[1]=-1.189199e+04  |di|/i=4.373e-13   i_ionic_R=-1.189199e+04  rel=1.224e-15
+
+  worst |di|/i over all 89 voltages          = 2.744e-11  (target <= 1e-6)
+  worst ionic rel_err over all 89 voltages   = 1.344e-12  (target < 0.01)
+  |dphi_L| range at i_total > 500 mA/cm2     = [16.18, 17.64] mV  (target 5-25)
+  dphi_L sign at high current               : all negative (expect all negative)
+
+5. Stage 4 -> Stage 5 current change (§11 check 5)
+   expect i_H2 to fall 3-10 %; i_CO may fall or RISE (migration relieves Sechenov)
+  V= -1.200  i_CO   221.1 ->   254.7 ( +15.2%)  i_H2    46.0 ->    42.5 (  -7.6%) | cell1: c_CO3    1935->   1205  c_Cs    3524->   2044  H_eff 7.15->10.34  c_CO2 6.06->8.45
+  V= -1.650  i_CO   242.3 ->   324.4 ( +33.9%)  i_H2   154.8 ->   139.4 (  -9.9%) | cell1: c_CO3    2545->   1602  c_Cs    4756->   2853  H_eff 5.26->8.46  c_CO2 4.34->6.50
+  V= -2.075  i_CO   166.4 ->   257.4 ( +54.7%)  i_H2   453.6 ->   424.4 (  -6.4%) | cell1: c_CO3    3425->   2063  c_Cs    6599->   3816  H_eff 3.33->6.65  c_CO2 2.63->4.85
+  V= -2.425  i_CO    86.2 ->   163.1 ( +89.3%)  i_H2   935.5 ->   908.8 (  -2.9%) | cell1: c_CO3    4589->   2836  c_Cs    9366->   5523  H_eff 1.66->4.34  c_CO2 1.11->2.68
+
+7 / §9.5.8. Polarization smoothness
+  sign changes in di_CO/dV  = 1  (target exactly 1)  PASS
+  sign changes in di_H2/dV  = 0  (target 0)          PASS
+  phi_L sign flips between neighbouring V = 0 (target 0) PASS
+  FE_CO peak = 85.7 % at V_RHE = -1.225
+
+§9.5.9 step 8 — model vs experiment at the 5 experimental voltages
+  V= -0.825  i_CO    35.4 vs   35.1 (  +1.0%)   i_H2    26.6 vs   29.9 ( -11.0%)
+  V= -1.200  i_CO   254.7 vs  189.6 ( +34.3%)   i_H2    42.5 vs   49.3 ( -13.9%)
+  V= -1.650  i_CO   324.4 vs  299.1 (  +8.4%)   i_H2   139.4 vs  119.6 ( +16.5%)
+  V= -2.075  i_CO   257.4 vs  204.3 ( +26.0%)   i_H2   424.4 vs  449.9 (  -5.7%)
+  V= -2.425  i_CO   163.1 vs   64.6 (+152.5%)   i_H2   908.8 vs  850.5 (  +6.9%)
+
+>>> STAGE 5 COMPLETE — generate plots and STOP for human review.

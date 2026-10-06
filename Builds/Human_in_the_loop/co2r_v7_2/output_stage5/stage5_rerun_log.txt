@@ -1,0 +1,120 @@
+# Re-run 2026-09-27 after the post-build Stage-5 change (no CO2(aq) flux at the GDL/CL face; guide v7.1, Stage 5 note). Console output follows.
+==============================================================================
+=== Stage 5 ===
+i0_CO2R = 106.5923 A/m^2, lambda_MHC = 1.6116 eV
+HER_pf  = 2.063148e+13, alpha_c = 0.088931, k_GL = 1.000e-04 m/s
+Mesh: N_CL = 80, N_GDL = 120
+Cache dir: output_stage5/cache
+Physics: Stage 4 + phi_L (NP migration, monolithic DOF) + phi_s (solid Ohm's law)
+==============================================================================
+Kinetics loaded from fitted_kinetics.jl (§11 gotcha #14) — verify against run_fit.jl:
+  i0_CO2R = 106.5923 A/m^2 (pre-fit 540) | lambda_MHC = 1.61156 eV (pre-fit 1.8)
+  HER_pf  = 2.063148e+13 (pre-fit 2.409e13) | alpha_c    = 0.088931 (pre-fit 0.0872)
+
+DOFs: 1480 = 5x80 liquid + 4x(120+80) gas + (120+80) phi_s + 80 phi_L
+sigma_s_eff: GDL 73.162 S/m, CL 11.030 S/m | D_eff_Cs = 1.1259e-10 m^2/s, z_Cs = +1
+
+Continuation chain: 33 pre-anchor ramp points (V_c = 0.000 -> -0.800) + 89 output points = 122 total
+Anchor: V_c = 0.000 (V_RHE = +0.51305, V_applied_SHE = 0.0) — constructed from physics, never a cache
+
+||F||inf at the constructed V_c = 0 anchor guess = 1.503e-01
+anchor phi_s block identically zero: true ; phi_L block identically zero: true
+  (§9.5.3: both blocks have rms exactly 0 at the anchor — the unit-weight fallback is exercised on the very first Newton step)
+anchor  V= 0.51305  iters=  4  ||F||inf=8.449e-11  err=1.07e-10  (err_estimate)
+  chain  10/122  V= 0.28805  ||F||inf=3.677e-09  cum.iters=22  (1.2 s)
+  chain  20/122  V= 0.03805  ||F||inf=7.945e-09  cum.iters=42  (2.0 s)
+  chain  30/122  V=-0.21195  ||F||inf=1.628e-08  cum.iters=62  (2.6 s)
+  chain  40/122  V=-0.45000  ||F||inf=1.680e-08  cum.iters=81  (3.2 s)
+  chain  50/122  V=-0.70000  ||F||inf=3.701e-08  cum.iters=101  (3.8 s)
+  chain  60/122  V=-0.95000  ||F||inf=3.044e-08  cum.iters=121  (4.5 s)
+  chain  70/122  V=-1.20000  ||F||inf=2.794e-08  cum.iters=141  (5.1 s)
+  chain  80/122  V=-1.45000  ||F||inf=3.361e-08  cum.iters=161  (5.7 s)
+  chain  90/122  V=-1.70000  ||F||inf=6.870e-08  cum.iters=180  (6.3 s)
+  chain 100/122  V=-1.95000  ||F||inf=7.948e-08  cum.iters=200  (6.9 s)
+  chain 110/122  V=-2.20000  ||F||inf=6.826e-08  cum.iters=220  (7.6 s)
+  chain 120/122  V=-2.45000  ||F||inf=6.107e-08  cum.iters=240  (8.3 s)
+  chain 122/122  V=-2.50000  ||F||inf=5.661e-08  cum.iters=244  (8.5 s)
+
+Sweep complete: 89/89 output voltages converged and cached (chain length 122)
+  Newton iters/step: 2.00
+  max ||F||inf     : 7.948e-08   (assertion tol 1.0e-06)
+  LU: 2 symbolic / 242 numeric (nnz-guard 1, lu!-pattern-catch 0)
+  sub-step recoveries: 0 ; §9.5.6 assertion recovery fired: 0 times
+  wall time: 8.48 s
+
+§9.5.9 step 4 — predictor A/B over 121 continuation steps:
+  ||u_pred - u*||: tangent median 1.973e+00, carry-forward+phi_s-shift median 4.649e+01
+  improvement factor: median 35.6x, min 6.0x, max 925.5x
+  tangent better at EVERY step: true   (criterion: median improvement > 10x)
+
+--- Polarization summary ---
+  i_CO  peak  333.65 mA/cm^2 at V_RHE = -1.500
+  i_H2  max   1049.13 mA/cm^2 at V_RHE = -2.500
+  FE_CO peak  85.7 % at V_RHE = -1.225
+  §9.5.8 smoothness: sign changes di_CO/dV = 1 (want exactly 1), di_H2/dV = 0 (want 0)
+  i_H2 strictly monotone in |V_RHE|: true
+
+--- §11 Stage 5 physicality checks ---
+    V_RHE  i_tot[mA/cm2]  phi_s drop[mV]  GDL share  |dphi_L|[mV]  |di|/i solid   |di|/i ionic
+   -0.300          8.69            0.43      89.2%         1.554     2.264e-11     3.117e-12
+   -1.200        297.27           14.83      88.7%        13.848     8.230e-14     3.059e-16
+   -1.650        464.24           23.13      88.8%        16.000     3.728e-13     5.877e-16
+   -2.075        682.36           34.09      88.6%        16.833     1.110e-12     3.999e-16
+   -2.500       1190.07           59.37      88.7%        17.643     1.498e-13     1.223e-15
+
+  1. solid ohmic drop over the sweep: 0.43 -> 59.37 mV  (§11 expects 5-80 mV; ~50 mV at 1 A/cm2)
+     at i_tot = 1002 mA/cm2 (closest to 1 A/cm2): drop = 50.0 mV
+  2. GDL/CL split of the solid drop at V_RHE=-2.500: GDL 88.7 % / CL 11.3 %  (§11 expects GDL 80-90 %)
+  3. phi_L profile monotone across the CL: true ; phi_L = (-17.643, -13.767, 0.000) mV at (1, N/2, N)
+     max c_Cs in the reaction zone at this voltage: 6013 mol/m^3  (§3.1 quotes 2045 -> 6027 over the sweep)
+  4. current consistency |i_s_face[1]| = i_far_total : max |di|/i = 2.323e-11  (§11 requires <= 1e-6)  PASS=true
+  6. ionic current at the electrolyte boundary       : max |di|/i = 3.117e-12  (§11 requires < 0.01)  PASS=true
+
+--- §9.5.8 / §3.1 Δφ_L diagnostic (the Cs+-migration smoking gun) ---
+  30 voltages with i_tot > 500 mA/cm^2: |dphi_L| = 16.19 .. 17.64 mV (median 16.96)
+  in the 5-25 mV band at every one of them: true
+  none below 5 mV (would mean Cs+ missing from i_L, or the low-CO branch): true
+  none above 30 mV (would mean a numerical artefact): true
+  sign of Δφ_L (must be negative, gauge phi_L[N]=0): phi_L[1] = -17.643 mV at V_RHE=-2.500
+  phi_L never changes sign between neighbouring voltages: true
+
+--- Stage 3 gas-phase checks (§11 Stage 3) ---
+   V_RHE    w_CO2 inlet -> CL exit   x_CO2 in->out    w_CO exit    w_H2 exit
+   -0.300    0.94713 ->  0.94717      0.8800 -> 0.8800    7.344e-08    6.936e-06
+   -1.200    0.94710 ->  0.93928      0.8800 -> 0.8709    1.116e-02    3.417e-05
+   -1.650    0.94709 ->  0.93739      0.8799 -> 0.8679    1.430e-02    1.124e-04
+   -2.500    0.94713 ->  0.94728      0.8800 -> 0.8714    6.314e-03    8.542e-04
+  at V_RHE = -2.500: w_CO2 monotone decreasing across GDL+CL: false
+                   x_CO2 (MOLE fraction) monotone decreasing:  true (0.87996 -> 0.87135)
+                   p_CO2 monotone decreasing:                  false (89161.8 -> 87158.8 Pa)
+                   w_CO  increases through the CL: true (6.102e-03 -> 6.314e-03)
+                   w_H2  increases through the CL: true (8.274e-04 -> 8.542e-04)
+  total pressure drop across GDL+CL: 8.8 Pa (mild) -> 1298.5 Pa (cathodic)
+  pressure drop across the CL alone : 8.2 Pa (mild) -> 1133.4 Pa (cathodic)
+
+--- Liquid-phase physicality checks (§11, §12.3) ---
+  V_RHE= -0.300 : pH  9.230 (x=0) ->  8.638 (x=L_CL) | c_CO2  12.6521 ->  12.5940 | c_OH     0.0930 ->     0.0238
+  V_RHE= -1.200 : pH 11.676 (x=0) -> 10.022 (x=L_CL) | c_CO2   8.4497 ->  10.2949 | c_OH    26.0176 ->     0.5759
+  V_RHE= -2.500 : pH 12.813 (x=0) -> 11.128 (x=L_CL) | c_CO2   2.1956 ->   6.4911 | c_OH   356.2775 ->     7.3572
+  pH decreases toward the electrolyte (§12.3): true  (pH[1]=12.813 > pH[N]=11.128)
+  c_OH(L_CL) above bulk equilibrium 9.2885e-03 (§11 Stage 2): true (=7.3572e+00)
+  pH range over the whole sweep: 8.638 .. 12.813 (§11 Stage 1 expects ~9-12 in operation)
+  §12.6 CO2 mass balance: max |residual| = 2.684e-13 mol/m2/s (tol 1e-6)  PASS=true
+
+--- Comparison with Romiluyi et al. 2023 (§16.1) ---
+   V_RHE    i_CO model / exp  (rel)      i_H2 model / exp  (rel)     FE_CO m/e
+   -0.816       32.69 /   35.1 (  -6.9%)       26.37 /   29.9 ( -11.8%)    55.3 /  54.0
+   -1.205      257.63 /  189.6 ( +35.9%)       42.93 /   49.3 ( -12.9%)    85.7 /  79.4
+   -1.644      325.39 /  299.1 (  +8.8%)      137.10 /  119.6 ( +14.6%)    70.4 /  71.4
+   -2.079      256.86 /  204.3 ( +25.7%)      428.75 /  449.9 (  -4.7%)    37.5 /  31.2
+   -2.413      166.86 /   64.6 (+158.3%)      888.43 /  850.5 (  +4.5%)    15.8 /   7.1
+
+Exported:
+  output_stage5/polarization.csv
+  output_stage5/profiles_liquid.bin
+  output_stage5/profiles_gas.bin
+  output_stage5/profiles_potential.bin
+
+==============================================================================
+STAGE 5 COMPLETE — 🛑 FINAL PHYSICS STOP GATE.
+==============================================================================
