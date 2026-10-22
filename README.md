@@ -127,5 +127,7 @@ describes the procedure.
 
 ## License
 
+Copyright © 2026 New York University and The University of British Columbia.
+
 The Julia source code in this repository (the `.jl` files) is released under
 the MIT License; see `LICENSE`. Other files are not covered by that license.
