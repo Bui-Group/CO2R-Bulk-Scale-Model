@@ -1,7 +1,8 @@
 # LLM-Assisted Generation of Transparent, Open-Source Multiphysics Models of Electrochemical Devices
 
 Code and specification release accompanying the manuscript of the same title
-(Castro, Schuchert, McCluskey, Lees, Bui). This repository contains the
+(Castro, Schuchert, McCluskey, Lees, Bui; preprint:
+[arXiv:2610.10320](https://arxiv.org/abs/2610.10320)). This repository contains the
 machine-readable implementation guide used as the agent harness, the Julia
 models built from it, and the build dialogues recorded during each build.
 
